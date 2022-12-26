@@ -1,0 +1,31 @@
+<div class="song_card">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-2">
+        <div>
+            <span class="card_name">{{songsdatas.band_title}}</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <div>
+                <span class="card_play">Play all</span>
+            </div>
+            <div class="p-1">
+                <mat-icon>play_circle_outline</mat-icon>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class=" p-2 rock_border" *ngFor="let songsdata of songsdatas.song_Data">
+        <div class="img_song">
+            <img src="{{songsdata.band_image}}" alt="">
+        </div>
+        <div class="dec_song">
+            <div>
+                <span class="song_title">{{songsdata.band_names}}</span>
+            </div>
+            <div>
+                <span class="song_dec">K{{songsdata.song_name}}</span>
+            </div>
+        </div>
+        <div class="more_song">
+            <mat-icon>more_vert</mat-icon>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,245 @@
+<div class="banner" fxHide fxShow.gt-sm>
+    <!-- <img src="../../../assets/Rectangle.png" alt=""> -->
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <input type="text" matInput [formControl]="myControl"
+                    placeholder="Search for new music, news, artists..." [matAutocomplete]="auto" class="input_search">
+                <button mat-icon-button aria-label="" matPrefix class="ml-2">
+                    <mat-icon class="input-icon">search</mat-icon>
+                </button>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </div>
+</div>
+<div fxLayout="row" class="chips" fxLayoutAlign="start center">
+    <div class="p-2" *ngFor="let moodLists of dashboardData.moodList">
+        <button mat-button class="btn_chip"> {{moodLists.title}}</button>
+    </div>
+</div>
+<mat-divider class="bord"></mat-divider>
+<div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+        <div>
+            <span class="title">
+                All
+            </span>
+        </div>
+        <div>
+            <a class="view_title">
+                View all
+            </a>
+        </div>
+    </div>
+    <div fxLayout="row" class="scroll">
+        <div class="p-2">
+            <div class="allsong_bord">
+                <div class="img_song">
+                    <img src="../../../assets/Playlist 2.png" width="65" alt="">
+                </div>
+                <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
+                    <div>
+                        <span class="song_title">Best Rock song</span>
+                    </div>
+                    <div>
+                        <span class="song_dec">Subir Nandi</span>
+                    </div>
+                </div>
+                <div class="more_song">
+                    <mat-icon>more_vert</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="allsong_bord">
+                <div class="img_song">
+                    <img src="../../../assets/Playlist 2.png" width="65" alt="">
+                </div>
+                <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
+                    <div>
+                        <span class="song_title">Best Rock song</span>
+                    </div>
+                    <div>
+                        <span class="song_dec">Subir Nandi</span>
+                    </div>
+                </div>
+                <div class="more_song">
+                    <mat-icon>more_vert</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="allsong_bord">
+                <div class="img_song">
+                    <img src="../../../assets/Playlist 2.png" width="65" alt="">
+                </div>
+                <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
+                    <div>
+                        <span class="song_title">Best Rock song</span>
+                    </div>
+                    <div>
+                        <span class="song_dec">Subir Nandi</span>
+                    </div>
+                </div>
+                <div class="more_song">
+                    <mat-icon>more_vert</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="allsong_bord">
+                <div class="img_song">
+                    <img src="../../../assets/Playlist 2.png" width="65" alt="">
+                </div>
+                <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
+                    <div>
+                        <span class="song_title">Best Rock song</span>
+                    </div>
+                    <div>
+                        <span class="song_dec">Subir Nandi</span>
+                    </div>
+                </div>
+                <div class="more_song">
+                    <mat-icon>more_vert</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="allsong_bord">
+                <div class="img_song">
+                    <img src="../../../assets/Playlist 2.png" width="65" alt="">
+                </div>
+                <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
+                    <div>
+                        <span class="song_title">Best Rock song</span>
+                    </div>
+                    <div>
+                        <span class="song_dec">Subir Nandi</span>
+                    </div>
+                </div>
+                <div class="more_song">
+                    <mat-icon>more_vert</mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pt-3">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+        <div>
+            <span class="title">
+                Play List For You
+            </span>
+        </div>
+        <div>
+            <a class="view_title">
+                View all
+            </a>
+        </div>
+    </div>
+    <div fxLayout="row" class="scroll">
+        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.playListForYou">
+            <app-playlist-content [playlistdata]="playsitsong"></app-playlist-content>
+        </div>
+    </div>
+</div>
+
+<div class="pt-3">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+        <div>
+            <span class="title">
+                Categories
+            </span>
+        </div>
+        <div>
+            <a class="view_title">
+                View all
+            </a>
+        </div>
+    </div>
+    <div fxLayout="row" class="scroll">
+        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.categories">
+            <app-playlist-content [playlistdata]="playsitsong"></app-playlist-content>
+        </div>
+    </div>
+</div>
+
+<div class="pt-3">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+        <div>
+            <span class="title">
+                Top Picks
+            </span>
+        </div>
+        <div>
+            <a class="view_title">
+                View all
+            </a>
+        </div>
+    </div>
+    <div fxLayout="row" class="chips" fxLayoutAlign="start center">
+        <div class="p-2" *ngFor="let moodLists of dashboardData.moodList">
+            <button mat-button class="btn_chip"> {{moodLists.title}}</button>
+        </div>
+    </div>
+    <div fxLayout="row" class="scroll">
+        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.topPicks.artist">
+            <app-singers [artistData]="playsitsong"></app-singers>
+        </div>
+    </div>
+</div>
+
+<div class="pt-3">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+        <div>
+            <span class="title">
+                Newly Added
+            </span>
+        </div>
+        <div>
+            <a class="view_title">
+                View all
+            </a>
+        </div>
+    </div>
+    <div fxLayout="row" class="scroll">
+        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.newAdded">
+            <app-playlist-content [playlistdata]="playsitsong"></app-playlist-content>
+        </div>
+    </div>
+</div>
+
+<div class="pt-3">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+        <div>
+            <span class="title">
+                Podcast
+            </span>
+        </div>
+        <div>
+            <a class="view_title">
+                View all
+            </a>
+        </div>
+    </div>
+    <div fxLayout="row" class="scroll">
+        <div class="p-2">
+            <img src="../../../assets/Podcast.png" alt="" width="300" height="160">
+        </div>
+        <div class="p-2">
+            <img src="../../../assets/Podcast1.png" alt="" width="300">
+        </div>
+        <div class="p-2">
+            <img src="../../../assets/Podcast1.png" alt="" width="300">
+        </div>
+        <div class="p-2">
+            <img src="../../../assets/Podcast1.png" alt="" width="300">
+        </div>
+    </div>
+</div>

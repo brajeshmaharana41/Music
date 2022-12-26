@@ -1,0 +1,86 @@
+.sidewith{
+    width: 230px;
+    background-color: #257FB6;
+  }
+  .listcol{
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+   
+  }
+  .sidemenu_titles{
+    color: #373B53;
+    font-size: 12px;
+    font-family: 'Heebo';    
+    font-weight: 500;
+  }
+  .title{
+    color: #0D2238;
+    font-size: 14px;
+    font-family: 'Inter';    
+    font-weight: 600;
+  }
+  .icon_sidemenu{
+    font-size: 22px;
+  }
+  mat-expansion-panel {
+  width: 251px;
+  box-shadow: none !important;
+  }
+  ::ng-deep .parametersPanel .mat-expansion-panel-body {
+    padding: 0;
+  }
+  :host {
+    .mat-icon {
+      vertical-align: middle;
+      margin-right: 20px;
+    }
+    .profile-card {
+      text-align: center;
+      padding: 0 20px 20px 20px;
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+  }
+  .example-tree-invisible {
+    display: none;
+  }
+  
+  .example-tree ul,
+  .example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+  
+  /*
+   * This padding sets alignment of the nested nodes.
+   */
+  .example-tree .mat-nested-tree-node div[role=group] {
+    padding-left: 0px;
+  }
+  .circle{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #b9b9b9;
+    margin-left: 30px;
+  }
+  .tree_expand{
+    cursor: pointer;
+    color: black;
+  }
+  .tree_expand:hover{
+    background-color: #257FB6;
+  }
+  .menu-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+  }
+  .menu-button.rotated {
+    transform: rotate(180deg);
+  }
+  

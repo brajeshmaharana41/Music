@@ -1,0 +1,177 @@
+::ng-deep .mat-form-field-outline-start {
+  border-radius: 30px 0 0 30px !important;
+  min-width: 30px !important;
+  background-color: #FFFFFF;
+}
+::ng-deep .mat-form-field-outline-end {
+  border-radius: 0 30px 30px 0 !important;
+  min-width: 30px !important;
+  background-color: #FFFFFF;
+}
+.banner{
+    // border: 1px solid #EFF4F6;
+    height: 307px;
+    background-image: url('../../../assets/Rectangle.png');
+    background-repeat: no-repeat;
+    // background-attachment: fixed;
+    background-size: cover;
+}
+.bord{
+  color: #EFF4F6;
+}
+.chips{
+    height: 63px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.scroll{
+  overflow: auto;
+}
+.scroll::-webkit-scrollbar{
+  display: none;
+}
+.arts_padding{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.btn_chip{
+    border: 1px solid #86909B;
+    border-radius: 20px;
+    background: #F4F8FB;
+    border: 1px solid rgba(134, 144, 155, 0.1);
+}
+.btn_chip:hover{
+  border: 1px solid #fb8aff;
+  border-radius: 20px;
+  background: #fb8aff;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 800px;
+    width: 100%;
+    // background-color: #FFFFFF;
+    border-radius: 20px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+    margin-top: 15px;
+  }
+  .input_search{
+    padding-bottom: 2px;
+    color: #C4C4C4;
+  }
+  .input-icon{
+    color: #C4C4C4;
+  }
+  .title{
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 18px;  
+    color: #0D2238;
+  }
+  .view_title{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+    color: #86909B;
+    text-decoration: none;
+  }
+  .song_card{
+    // display: flex;
+    // flex-direction: column;
+    // align-items: flex-start;
+    // padding: 16px;
+    // gap: 20px;
+    width: 315px;
+    height: 336px;    
+    background: #F4F8FB;
+    border: 1px solid rgba(134, 144, 155, 0.1);
+    border-radius: 8px;
+    // flex: none;
+    // order: 0;
+    // flex-grow: 0;  
+    .card_name{
+      font-family: 'Inter';
+      font-weight: 700;
+      font-size: 16px;
+      color: #0D2238;
+    }
+    .card_play{
+      font-family: 'Inter';
+      font-weight: 400;
+      font-size: 14px;
+      color: #0D2238;
+    }
+    .rock_border{
+      height: 60px;
+      .img_song{
+        width: 53px;
+        height: 53px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .dec_song{
+        width: 200px;
+        height: 53px;
+        .song_title{
+          font-weight: 600;
+          font-size: 12px; 
+          font-family: 'Inter';
+          color: #0D2238;
+        }
+        .song_dec{
+          font-weight: 400;
+          font-size: 12px; 
+          font-family: 'Inter';
+          color: #86909B;        
+        }
+      }
+      .more_song{
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .allsong_bord{
+    width: 215px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .img_song{
+      width: 80px;
+      height: 53px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .dec_song{
+      width: 100px;
+      height: 53px;
+      margin-bottom: 5px;
+      .song_title{
+        font-weight: 600;
+        font-size: 12px; 
+        font-family: 'Inter';
+        color: #0D2238;
+      }
+      .song_dec{
+        font-weight: 400;
+        font-size: 12px; 
+        font-family: 'Inter';
+        color: #86909B;        
+      }
+    }
+    .more_song{
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
