@@ -207,6 +207,36 @@ const PlaylistData: PlaylitList[] = [
     songs: '12 songs'
   },
 ]
+
+export interface MoodSongType{
+  artist:string,
+description:string,
+downloadCount:number,
+duration:string,
+id:string,
+media_file:string,
+playCount:number
+thumb_img:string,
+title:string,
+}
+
+export interface MoodType{
+  description:string,
+id:string,
+img:string,
+songs: Array<MoodSongType>,
+title:string
+}
+
+export interface TopPickSubType{
+  id:string,
+  img:string,
+  title:string
+}
+export interface TopPickType{
+actor: Array<TopPickSubType>,
+artist: Array<TopPickSubType>
+}
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -224,6 +254,9 @@ export class DashboardComponent implements OnInit {
   dashboardData: any;
   playlistTitle=[];
   playlist=[];
+  selectedMood:MoodType;
+  selectedTopPick:Array<TopPickSubType>;
+  selectedToPickID:number;
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -240,6 +273,8 @@ export class DashboardComponent implements OnInit {
     this._mainService$.getDashboard().subscribe((res)=>{
       if(res && res.body){
         this.dashboardData={...res.body};
+        this.autoSelectAllMoodType();
+        this.selectTopPick(this.topPickList.artist,1);
         console.log(this.dashboardData);
       }
     },(err:HttpErrorResponse)=>{
@@ -247,6 +282,27 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  get topPickList(){
+    return this.dashboardData.topPicks;
+  }
+
+  selectMood(moodObj:MoodType){
+   this.selectedMood=moodObj;
+  }
+
+  autoSelectAllMoodType(){
+    (this.dashboardData.moodList as []).filter((ele:MoodType)=>{
+      if(ele && ele.id==='all'){
+        this.selectMood(ele);
+      }
+    });
+  }
+
+  selectTopPick(topPick:Array<TopPickSubType>,topPickID:number){
+this.selectedTopPick=topPick;
+this.selectedToPickID=topPickID;
+console.log(this.selectedTopPick);
+  }
   displayFn(user: User): string {
     return user && user.name ? user.name : '';
   }

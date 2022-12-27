@@ -18,8 +18,8 @@
     </div>
 </div>
 <div fxLayout="row" class="chips" fxLayoutAlign="start center">
-    <div class="p-2" *ngFor="let moodLists of dashboardData.moodList">
-        <button mat-button class="btn_chip"> {{moodLists.title}}</button>
+    <div class="p-2" (click)="selectMood(moodLists)"  *ngFor="let moodLists of dashboardData.moodList">
+        <button mat-button class="btn_chip" [ngStyle]="{'background':selectedMood.id===moodLists.id?'#fb8aff':''}"> {{moodLists?.title}}</button>
     </div>
 </div>
 <mat-divider class="bord"></mat-divider>
@@ -27,7 +27,7 @@
     <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
         <div>
             <span class="title">
-                All
+                {{selectedMood?.title}}
             </span>
         </div>
         <div>
@@ -37,89 +37,17 @@
         </div>
     </div>
     <div fxLayout="row" class="scroll">
-        <div class="p-2">
+        <div *ngFor="let moodSong of (selectedMood?.songs | slice:0:10)" class="p-2">
             <div class="allsong_bord">
                 <div class="img_song">
-                    <img src="../../../assets/Playlist 2.png" width="65" alt="">
+                    <img src="{{moodSong?.thumb_img}}" width="65" alt="">
                 </div>
                 <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
                     <div>
-                        <span class="song_title">Best Rock song</span>
+                        <span class="song_title">{{moodSong?.title}}</span>
                     </div>
                     <div>
-                        <span class="song_dec">Subir Nandi</span>
-                    </div>
-                </div>
-                <div class="more_song">
-                    <mat-icon>more_vert</mat-icon>
-                </div>
-            </div>
-        </div>
-        <div class="p-2">
-            <div class="allsong_bord">
-                <div class="img_song">
-                    <img src="../../../assets/Playlist 2.png" width="65" alt="">
-                </div>
-                <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
-                    <div>
-                        <span class="song_title">Best Rock song</span>
-                    </div>
-                    <div>
-                        <span class="song_dec">Subir Nandi</span>
-                    </div>
-                </div>
-                <div class="more_song">
-                    <mat-icon>more_vert</mat-icon>
-                </div>
-            </div>
-        </div>
-        <div class="p-2">
-            <div class="allsong_bord">
-                <div class="img_song">
-                    <img src="../../../assets/Playlist 2.png" width="65" alt="">
-                </div>
-                <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
-                    <div>
-                        <span class="song_title">Best Rock song</span>
-                    </div>
-                    <div>
-                        <span class="song_dec">Subir Nandi</span>
-                    </div>
-                </div>
-                <div class="more_song">
-                    <mat-icon>more_vert</mat-icon>
-                </div>
-            </div>
-        </div>
-        <div class="p-2">
-            <div class="allsong_bord">
-                <div class="img_song">
-                    <img src="../../../assets/Playlist 2.png" width="65" alt="">
-                </div>
-                <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
-                    <div>
-                        <span class="song_title">Best Rock song</span>
-                    </div>
-                    <div>
-                        <span class="song_dec">Subir Nandi</span>
-                    </div>
-                </div>
-                <div class="more_song">
-                    <mat-icon>more_vert</mat-icon>
-                </div>
-            </div>
-        </div>
-        <div class="p-2">
-            <div class="allsong_bord">
-                <div class="img_song">
-                    <img src="../../../assets/Playlist 2.png" width="65" alt="">
-                </div>
-                <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
-                    <div>
-                        <span class="song_title">Best Rock song</span>
-                    </div>
-                    <div>
-                        <span class="song_dec">Subir Nandi</span>
+                        <span class="song_dec">{{moodSong?.title}}</span>
                     </div>
                 </div>
                 <div class="more_song">
@@ -130,7 +58,7 @@
     </div>
 </div>
 
-<div class="pt-3">
+<div *ngIf="dashboardData?.playListForYou.length>0" class="pt-3">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
         <div>
             <span class="title">
@@ -145,12 +73,22 @@
     </div>
     <div fxLayout="row" class="scroll">
         <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.playListForYou">
-            <app-playlist-content [playlistdata]="playsitsong"></app-playlist-content>
+            <div fxLayout="column" fxLayoutAlign="center start">
+                <div>
+                    <img src="{{playsitsong?.img}}" alt="" width="100" height="100">
+                </div>
+                <div class="pt-2">
+                    <span class="sing_name">{{playsitsong?.title | slice:0:14}}</span>        
+                </div>
+                <div>
+                    <span class="songs">{{playsitsong?.songCount}} songs</span>        
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="pt-3">
+<div *ngIf="dashboardData?.categories.length>0" class="pt-3">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
         <div>
             <span class="title">
@@ -184,18 +122,21 @@
         </div>
     </div>
     <div fxLayout="row" class="chips" fxLayoutAlign="start center">
-        <div class="p-2" *ngFor="let moodLists of dashboardData.moodList">
-            <button mat-button class="btn_chip"> {{moodLists.title}}</button>
+        <div class="p-2" (click)="selectTopPick(topPickList?.artist,1)">
+            <button mat-button class="btn_chip" [ngStyle]="{'background':selectedToPickID===1?'#fb8aff':''}">Artist</button>
+        </div>
+        <div class="p-2"  (click)="selectTopPick(topPickList?.actor,2)">
+            <button mat-button class="btn_chip" [ngStyle]="{'background':selectedToPickID===2?'#fb8aff':''}">Actor</button>
         </div>
     </div>
     <div fxLayout="row" class="scroll">
-        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.topPicks.artist">
-            <app-singers [artistData]="playsitsong"></app-singers>
+        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let selectedTopPickObj of (selectedTopPick | slice:0:10)">
+            <app-singers [artistData]="selectedTopPickObj"></app-singers>
         </div>
     </div>
 </div>
 
-<div class="pt-3">
+<div *ngIf="dashboardData?.newAdded.length>0" class="pt-3">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
         <div>
             <span class="title">
@@ -215,7 +156,7 @@
     </div>
 </div>
 
-<div class="pt-3">
+<div *ngIf="dashboardData?.podcast.length>0" class="pt-3">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
         <div>
             <span class="title">
@@ -229,17 +170,8 @@
         </div>
     </div>
     <div fxLayout="row" class="scroll">
-        <div class="p-2">
-            <img src="../../../assets/Podcast.png" alt="" width="300" height="160">
-        </div>
-        <div class="p-2">
-            <img src="../../../assets/Podcast1.png" alt="" width="300">
-        </div>
-        <div class="p-2">
-            <img src="../../../assets/Podcast1.png" alt="" width="300">
-        </div>
-        <div class="p-2">
-            <img src="../../../assets/Podcast1.png" alt="" width="300">
+        <div class="p-2" *ngFor="let playsitsong of dashboardData?.podcast">
+            <img src="{{playsitsong?.thumb_img}}" alt="" width="300" class="pordcast_img">
         </div>
     </div>
 </div>
