@@ -145,7 +145,17 @@
     </div>
     <div fxLayout="row" class="scroll">
         <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.playListForYou">
-            <app-playlist-content [playlistdata]="playsitsong"></app-playlist-content>
+            <div fxLayout="column" fxLayoutAlign="center start">
+                <div>
+                    <img src="{{playsitsong?.img}}" alt="" width="100" height="100">
+                </div>
+                <div class="pt-2">
+                    <span class="sing_name">{{playsitsong?.title | slice:0:14}}</span>        
+                </div>
+                <div>
+                    <span class="songs">{{playsitsong.songCount}} songs</span>        
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -184,8 +194,11 @@
         </div>
     </div>
     <div fxLayout="row" class="chips" fxLayoutAlign="start center">
-        <div class="p-2" *ngFor="let moodLists of dashboardData.moodList">
-            <button mat-button class="btn_chip"> {{moodLists.title}}</button>
+        <div class="p-2">
+            <button mat-button class="btn_chip">Artist</button>
+        </div>
+        <div class="p-2">
+            <button mat-button class="btn_chip">Actor</button>
         </div>
     </div>
     <div fxLayout="row" class="scroll">
@@ -229,17 +242,8 @@
         </div>
     </div>
     <div fxLayout="row" class="scroll">
-        <div class="p-2">
-            <img src="../../../assets/Podcast.png" alt="" width="300" height="160">
-        </div>
-        <div class="p-2">
-            <img src="../../../assets/Podcast1.png" alt="" width="300">
-        </div>
-        <div class="p-2">
-            <img src="../../../assets/Podcast1.png" alt="" width="300">
-        </div>
-        <div class="p-2">
-            <img src="../../../assets/Podcast1.png" alt="" width="300">
+        <div class="p-2" *ngFor="let playsitsong of dashboardData?.podcast">
+            <img src="{{playsitsong?.thumb_img}}" alt="" width="300" class="pordcast_img">
         </div>
     </div>
 </div>
