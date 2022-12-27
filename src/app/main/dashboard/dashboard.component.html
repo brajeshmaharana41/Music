@@ -37,7 +37,7 @@
         </div>
     </div>
     <div fxLayout="row" class="scroll">
-        <div *ngFor="let moodSong of selectedMood?.songs" class="p-2">
+        <div *ngFor="let moodSong of (selectedMood?.songs | slice:0:10)" class="p-2">
             <div class="allsong_bord">
                 <div class="img_song">
                     <img src="{{moodSong?.thumb_img}}" width="65" alt="">
@@ -81,7 +81,7 @@
                     <span class="sing_name">{{playsitsong?.title | slice:0:14}}</span>        
                 </div>
                 <div>
-                    <span class="songs">{{playsitsong.songCount}} songs</span>        
+                    <span class="songs">{{playsitsong?.songCount}} songs</span>        
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@
         </div>
     </div>
     <div fxLayout="row" class="scroll">
-        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let selectedTopPickObj of selectedTopPick">
+        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let selectedTopPickObj of (selectedTopPick | slice:0:10)">
             <app-singers [artistData]="selectedTopPickObj"></app-singers>
         </div>
     </div>
