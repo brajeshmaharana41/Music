@@ -199,6 +199,46 @@
   </div>
 </div>
 
+<div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+    <div>
+      <span class="title">Podcast </span>
+    </div>
+    <div>
+      <a class="view_title"> View all </a>
+    </div>
+  </div>
+  <div fxLayout="row" class="scroll">
+    <div
+      *ngFor="let podCast of dashboardData?.podcast; let i = index"
+      class="p-2"
+      (click)="_commonService$.createPlayList(dashboardData?.podcast, i)"
+    >
+      <div class="allsong_bord">
+        <div class="img_song">
+          <img src="{{ podCast?.thumb_img }}" width="65" alt="" />
+        </div>
+        <div
+          class="dec_song"
+          fxLayout="column"
+          fxLayoutAlign="space-around start"
+          fxLayoutGap="gappx"
+        >
+          <div>
+            <span class="song_title">{{ podCast?.title }}</span>
+          </div>
+          <div>
+            <span class="song_dec">{{ podCast?.title }}</span>
+          </div>
+        </div>
+        <div class="more_song">
+          <mat-icon>more_vert</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div *ngIf="dashboardData?.playListForYou.length > 0" class="pt-3">
   <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
     <div>
