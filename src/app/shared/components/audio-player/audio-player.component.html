@@ -1,0 +1,18 @@
+<div>
+  <ngx-audio-player
+    *ngIf="_commonService$?.playList?.length > 0"
+    [playlist]="_commonService$.playList"
+    [displayTitle]="msaapDisplayTitle"
+    [autoPlay]="msaapAutoPlay"
+    muted="muted"
+    [displayPlaylist]="msaapDisplayPlayList"
+    [pageSizeOptions]="msaapPageSizeOptions"
+    (trackEnded)="onEnded($event)"
+    [displayVolumeControls]="msaapDisplayVolumeControls"
+    [displayRepeatControls]="msaapDisplayRepeatControls"
+    [disablePositionSlider]="msaapDisablePositionSlider"
+    [displayArtist]="msaapDisplayArtist"
+    [displayDuration]="msaapDisplayDuration"
+    [expanded]="msaapExpanded"
+  ></ngx-audio-player>
+</div>

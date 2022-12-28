@@ -1,177 +1,316 @@
 <div class="banner" fxHide fxShow.gt-sm>
-    <!-- <img src="../../../assets/Rectangle.png" alt=""> -->
-    <div fxLayout="row" fxLayoutAlign="center center">
-        <form class="example-form">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <input type="text" matInput [formControl]="myControl"
-                    placeholder="Search for new music, news, artists..." [matAutocomplete]="auto" class="input_search">
-                <button mat-icon-button aria-label="" matPrefix class="ml-2">
-                    <mat-icon class="input-icon">search</mat-icon>
-                </button>
-                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                        {{option.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </form>
-    </div>
+  <!-- <img src="../../../assets/Rectangle.png" alt=""> -->
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <input
+          type="text"
+          matInput
+          [formControl]="myControl"
+          placeholder="Search for new music, news, artists..."
+          [matAutocomplete]="auto"
+          class="input_search"
+        />
+        <button mat-icon-button aria-label="" matPrefix class="ml-2">
+          <mat-icon class="input-icon">search</mat-icon>
+        </button>
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
 </div>
 <div fxLayout="row" class="chips" fxLayoutAlign="start center">
-    <div class="p-2" (click)="selectMood(moodLists)"  *ngFor="let moodLists of dashboardData.moodList">
-        <button mat-button class="btn_chip" [ngStyle]="{'background':selectedMood.id===moodLists.id?'#fb8aff':''}"> {{moodLists?.title}}</button>
-    </div>
+  <div
+    class="p-2"
+    (click)="selectMood(moodLists)"
+    *ngFor="let moodLists of dashboardData?.moodList"
+  >
+    <button
+      mat-button
+      class="btn_chip"
+      [ngStyle]="{
+        background: selectedMood.id === moodLists.id ? '#fb8aff' : ''
+      }"
+    >
+      {{ moodLists?.title }}
+    </button>
+  </div>
 </div>
 <mat-divider class="bord"></mat-divider>
 <div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
-        <div>
-            <span class="title">
-                {{selectedMood?.title}}
-            </span>
-        </div>
-        <div>
-            <a class="view_title">
-                View all
-            </a>
-        </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+    <div>
+      <span class="title">
+        {{ selectedMood?.title }}
+      </span>
     </div>
-    <div fxLayout="row" class="scroll">
-        <div *ngFor="let moodSong of (selectedMood?.songs | slice:0:10)" class="p-2">
-            <div class="allsong_bord">
-                <div class="img_song">
-                    <img src="{{moodSong?.thumb_img}}" width="65" alt="">
-                </div>
-                <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx">
-                    <div>
-                        <span class="song_title">{{moodSong?.title}}</span>
-                    </div>
-                    <div>
-                        <span class="song_dec">{{moodSong?.title}}</span>
-                    </div>
-                </div>
-                <div class="more_song">
-                    <mat-icon>more_vert</mat-icon>
-                </div>
-            </div>
-        </div>
+    <div>
+      <a class="view_title"> View all </a>
     </div>
+  </div>
+  <div fxLayout="row" class="scroll">
+    <div
+      *ngFor="
+        let moodSong of selectedMood?.songs | slice : 0 : 10;
+        let i = index
+      "
+      class="p-2"
+      (click)="_commonService$.createPlayList(selectedMood?.songs, i)"
+    >
+      <div class="allsong_bord">
+        <div class="img_song">
+          <img src="{{ moodSong?.thumb_img }}" width="65" alt="" />
+        </div>
+        <div
+          class="dec_song"
+          fxLayout="column"
+          fxLayoutAlign="space-around start"
+          fxLayoutGap="gappx"
+        >
+          <div>
+            <span class="song_title">{{ moodSong?.title }}</span>
+          </div>
+          <div>
+            <span class="song_dec">{{ moodSong?.title }}</span>
+          </div>
+        </div>
+        <div class="more_song">
+          <mat-icon>more_vert</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div *ngIf="dashboardData?.playListForYou.length>0" class="pt-3">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
-        <div>
-            <span class="title">
-                Play List For You
-            </span>
-        </div>
-        <div>
-            <a class="view_title">
-                View all
-            </a>
-        </div>
+<div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+    <div>
+      <span class="title"> Recently Played </span>
     </div>
-    <div fxLayout="row" class="scroll">
-        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.playListForYou">
-            <div fxLayout="column" fxLayoutAlign="center start">
-                <div>
-                    <img src="{{playsitsong?.img}}" alt="" width="100" height="100">
-                </div>
-                <div class="pt-2">
-                    <span class="sing_name">{{playsitsong?.title | slice:0:14}}</span>        
-                </div>
-                <div>
-                    <span class="songs">{{playsitsong?.songCount}} songs</span>        
-                </div>
-            </div>
-        </div>
+    <div>
+      <a class="view_title"> View all </a>
     </div>
-</div>
-
-<div *ngIf="dashboardData?.categories.length>0" class="pt-3">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
-        <div>
-            <span class="title">
-                Categories
-            </span>
+  </div>
+  <div fxLayout="row" class="scroll">
+    <div
+      *ngFor="let recentSong of dashboardData?.recentPlay; let i = index"
+      class="p-2"
+      (click)="_commonService$.createPlayList(dashboardData?.recentPlay, i)"
+    >
+      <div class="allsong_bord">
+        <div class="img_song">
+          <img src="{{ recentSong?.thumb_img }}" width="65" alt="" />
         </div>
-        <div>
-            <a class="view_title">
-                View all
-            </a>
+        <div
+          class="dec_song"
+          fxLayout="column"
+          fxLayoutAlign="space-around start"
+          fxLayoutGap="gappx"
+        >
+          <div>
+            <span class="song_title">{{ recentSong?.title }}</span>
+          </div>
+          <div>
+            <span class="song_dec">{{ recentSong?.title }}</span>
+          </div>
         </div>
+        <div class="more_song">
+          <mat-icon>more_vert</mat-icon>
+        </div>
+      </div>
     </div>
-    <div fxLayout="row" class="scroll">
-        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.categories">
-            <app-playlist-content [playlistdata]="playsitsong"></app-playlist-content>
-        </div>
-    </div>
+  </div>
 </div>
 
 <div class="pt-3">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
-        <div>
-            <span class="title">
-                Top Picks
-            </span>
-        </div>
-        <div>
-            <a class="view_title">
-                View all
-            </a>
-        </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+    <div>
+      <span class="title">Trending</span>
     </div>
-    <div fxLayout="row" class="chips" fxLayoutAlign="start center">
-        <div class="p-2" (click)="selectTopPick(topPickList?.artist,1)">
-            <button mat-button class="btn_chip" [ngStyle]="{'background':selectedToPickID===1?'#fb8aff':''}">Artist</button>
-        </div>
-        <div class="p-2"  (click)="selectTopPick(topPickList?.actor,2)">
-            <button mat-button class="btn_chip" [ngStyle]="{'background':selectedToPickID===2?'#fb8aff':''}">Actor</button>
-        </div>
+    <div>
+      <a class="view_title"> View all </a>
     </div>
-    <div fxLayout="row" class="scroll">
-        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let selectedTopPickObj of (selectedTopPick | slice:0:10)">
-            <app-singers [artistData]="selectedTopPickObj"></app-singers>
-        </div>
+  </div>
+  <div fxLayout="row" class="chips" fxLayoutAlign="start center">
+    <div
+      *ngFor="let trending of dashboardData?.trending"
+      class="p-2"
+      (click)="selectedTrending = trending"
+    >
+      <button
+        mat-button
+        class="btn_chip"
+        [ngStyle]="{
+          background:
+            selectedTrending?.title === trending?.title ? '#fb8aff' : ''
+        }"
+      >
+        {{ trending?.title }}
+      </button>
     </div>
+    <!-- <div class="p-2" (click)="selectTopPick(topPickList?.actor, 2)">
+          <button
+            mat-button
+            class="btn_chip"
+            [ngStyle]="{ background: selectedToPickID === 2 ? '#fb8aff' : '' }"
+          >
+            Actor
+          </button>
+        </div> -->
+  </div>
+  <div fxLayout="row" class="scroll">
+    <div
+      *ngFor="
+        let trendingSong of selectedTrending?.songs | slice : 0 : 10;
+        let i = index
+      "
+      class="p-2"
+      (click)="_commonService$.createPlayList(selectedTrending?.songs, i)"
+    >
+      <div class="allsong_bord">
+        <div class="img_song">
+          <img src="{{ trendingSong?.thumb_img }}" width="65" alt="" />
+        </div>
+        <div
+          class="dec_song"
+          fxLayout="column"
+          fxLayoutAlign="space-around start"
+          fxLayoutGap="gappx"
+        >
+          <div>
+            <span class="song_title">{{ trendingSong?.title }}</span>
+          </div>
+          <div>
+            <span class="song_dec">{{ trendingSong?.description }}</span>
+          </div>
+        </div>
+        <div class="more_song">
+          <mat-icon>more_vert</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div *ngIf="dashboardData?.newAdded.length>0" class="pt-3">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
-        <div>
-            <span class="title">
-                Newly Added
-            </span>
-        </div>
-        <div>
-            <a class="view_title">
-                View all
-            </a>
-        </div>
+<div *ngIf="dashboardData?.playListForYou.length > 0" class="pt-3">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+    <div>
+      <span class="title"> Play List For You </span>
     </div>
-    <div fxLayout="row" class="scroll">
-        <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.newAdded">
-            <app-playlist-content [playlistdata]="playsitsong"></app-playlist-content>
-        </div>
+    <div>
+      <a class="view_title"> View all </a>
     </div>
+  </div>
+  <div fxLayout="row" class="scroll">
+    <div
+      class="arts_padding"
+      fxLayoutAlign="center center"
+      *ngFor="let playsitsong of dashboardData?.playListForYou"
+    >
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <div>
+          <img src="{{ playsitsong?.img }}" alt="" width="100" height="100" />
+        </div>
+        <div class="pt-2">
+          <span class="sing_name">{{
+            playsitsong?.title | slice : 0 : 14
+          }}</span>
+        </div>
+        <div>
+          <span class="songs">{{ playsitsong?.songCount }} songs</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div *ngIf="dashboardData?.podcast.length>0" class="pt-3">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
-        <div>
-            <span class="title">
-                Podcast
-            </span>
-        </div>
-        <div>
-            <a class="view_title">
-                View all
-            </a>
-        </div>
+<div *ngIf="dashboardData?.categories.length > 0" class="pt-3">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+    <div>
+      <span class="title"> Categories </span>
     </div>
-    <div fxLayout="row" class="scroll">
-        <div class="p-2" *ngFor="let playsitsong of dashboardData?.podcast">
-            <img src="{{playsitsong?.thumb_img}}" alt="" width="300" class="pordcast_img">
-        </div>
+    <div>
+      <a class="view_title"> View all </a>
     </div>
+  </div>
+  <div fxLayout="row" class="scroll">
+    <div
+      class="arts_padding"
+      fxLayoutAlign="center center"
+      *ngFor="let playsitsong of dashboardData?.categories"
+    >
+      <app-playlist-content [playlistdata]="playsitsong"></app-playlist-content>
+    </div>
+  </div>
 </div>
+
+<div class="pt-3">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+    <div>
+      <span class="title"> Top Picks </span>
+    </div>
+    <div>
+      <a class="view_title"> View all </a>
+    </div>
+  </div>
+  <div fxLayout="row" class="chips" fxLayoutAlign="start center">
+    <div class="p-2" (click)="selectTopPick(topPickList?.artist, 1)">
+      <button
+        mat-button
+        class="btn_chip"
+        [ngStyle]="{ background: selectedToPickID === 1 ? '#fb8aff' : '' }"
+      >
+        Artist
+      </button>
+    </div>
+    <div class="p-2" (click)="selectTopPick(topPickList?.actor, 2)">
+      <button
+        mat-button
+        class="btn_chip"
+        [ngStyle]="{ background: selectedToPickID === 2 ? '#fb8aff' : '' }"
+      >
+        Actor
+      </button>
+    </div>
+  </div>
+  <div fxLayout="row" class="scroll">
+    <div
+      class="arts_padding"
+      fxLayoutAlign="center center"
+      *ngFor="let selectedTopPickObj of selectedTopPick | slice : 0 : 10"
+    >
+      <app-singers [artistData]="selectedTopPickObj"></app-singers>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="dashboardData?.newAdded.length > 0" class="pt-3">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+    <div>
+      <span class="title"> Newly Added </span>
+    </div>
+    <div>
+      <a class="view_title"> View all </a>
+    </div>
+  </div>
+  <div fxLayout="row" class="scroll">
+    <div
+      class="arts_padding"
+      fxLayoutAlign="center center"
+      *ngFor="let playsitsong of dashboardData?.newAdded"
+    >
+      <app-playlist-content [playlistdata]="playsitsong"></app-playlist-content>
+    </div>
+  </div>
+</div>
+
+<!-- <div>
+  <app-audio-player></app-audio-player>
+</div> -->
