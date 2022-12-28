@@ -28,6 +28,7 @@ import { PlaylistContentComponent } from '../shared/components/playlist-content/
 import { BandPlayListComponent } from '../shared/components/band-play-list/band-play-list.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { SharedModule } from '../shared/shared.module';
     MatFormFieldModule,
     MatInputModule,
     SharedModule,
+    MatMenuModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
