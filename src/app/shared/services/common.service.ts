@@ -1,9 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Track } from 'ngx-audio-player';
+import * as Type from '../type/main.type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommonService {
-
-  constructor() { }
+  playList: Track[];
+  constructor() {}
+  createPlayList(songs: Type.SongType[], i: number) {
+    this.playList = songs.slice(i).map((ele: Type.SongType) => {
+      return {
+        title: ele.title,
+        link: ele.media_file,
+        artist: ele.artist,
+      };
+    });
+  }
 }
