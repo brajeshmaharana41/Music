@@ -8,12 +8,12 @@ import { CommonService } from '../../services/common.service';
   styleUrls: ['./audio-player.component.scss'],
 })
 export class AudioPlayerComponent implements OnInit {
-  msaapDisplayTitle = true;
-  msaapDisplayPlayList = true;
+  msaapDisplayTitle = false;
+  msaapDisplayPlayList = false;
   msaapPageSizeOptions = [10, 20, 30];
   msaapDisplayVolumeControls = true;
   msaapDisplayRepeatControls = true;
-  msaapDisplayArtist = true;
+  msaapDisplayArtist = false;
   msaapDisplayDuration = false;
   msaapDisablePositionSlider = false;
   msaapAutoPlay = true;
