@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ViewDataComponent } from '../shared/components/view-data/view-data.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 
@@ -9,6 +10,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'viewData/:id', component: ViewDataComponent},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     ],
   }

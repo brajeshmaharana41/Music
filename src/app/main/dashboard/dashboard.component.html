@@ -34,7 +34,7 @@
       </span>
     </div>
     <div>
-      <a class="view_title"> View all </a>
+      <a class="view_title" routerLink="/viewData/:{{selectedMood?.id}}" routerLinkActive="active"> View all </a>
     </div>
   </div>
   <div fxLayout="row" class="scroll">
@@ -86,7 +86,7 @@
   </div>
 </div>
 
-<div>
+<!-- <div>
   <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
     <div>
       <span class="title"> Recently Played </span>
@@ -140,9 +140,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="pt-3">
+<!-- <div class="pt-3">
   <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
     <div>
       <span class="title">Trending</span>
@@ -208,7 +208,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <div *ngIf="dashboardData?.playListForYou.length > 0" class="pt-3">
@@ -216,9 +216,9 @@
     <div>
       <span class="title"> Play List For You </span>
     </div>
-    <div>
+    <!-- <div>
       <a class="view_title"> View all </a>
-    </div>
+    </div> -->
   </div>
   <div fxLayout="row" class="scroll">
     <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.playListForYou">
@@ -244,9 +244,9 @@
     <div>
       <span class="title"> Categories </span>
     </div>
-    <div>
+    <!-- <div>
       <a class="view_title"> View all </a>
-    </div>
+    </div> -->
   </div>
   <div fxLayout="row" class="scroll">
     <div class="arts_padding" fxLayoutAlign="center center" *ngFor="let playsitsong of dashboardData?.categories">
@@ -260,9 +260,9 @@
     <div>
       <span class="title"> Top Picks </span>
     </div>
-    <div>
+    <!-- <div>
       <a class="view_title"> View all </a>
-    </div>
+    </div> -->
   </div>
   <div fxLayout="row" class="chips" fxLayoutAlign="start center">
     <div class="p-2" (click)="selectTopPick(topPickList?.artist, 1)">
