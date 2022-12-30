@@ -10,14 +10,14 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'viewData/:id', component: ViewDataComponent},
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      { path: 'viewData', component: ViewDataComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MainRoutingModule { }
+export class MainRoutingModule {}

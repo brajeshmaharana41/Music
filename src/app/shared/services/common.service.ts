@@ -7,6 +7,8 @@ import * as Type from '../type/main.type';
 })
 export class CommonService {
   playList: Track[];
+  viewDataCompSongList: Type.SongType[];
+  listTitle: string;
   constructor() {}
   createPlayList(songs: Type.SongType[], i: number) {
     this.playList = songs.slice(i).map((ele: Type.SongType) => {

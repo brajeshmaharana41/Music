@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MainService } from '../main.service';
 import { CommonService } from 'src/app/shared/services/common.service';
+import { Router } from '@angular/router';
 
 export interface User {
   name: string;
@@ -218,7 +219,8 @@ const PlaylistData: PlaylitList[] = [
 export class DashboardComponent implements OnInit {
   constructor(
     private _mainService$: MainService,
-    public _commonService$: CommonService
+    public _commonService$: CommonService,
+    public _router$: Router
   ) {}
   myControl = new FormControl<string | User>('');
   options: User[] = [{ name: 'Mary' }, { name: 'Shelley' }, { name: 'Igor' }];
@@ -278,6 +280,12 @@ export class DashboardComponent implements OnInit {
         this.selectMood(ele);
       }
     });
+  }
+
+  goToViewAll(songList: Type.SongType[], listTitle: string) {
+    this._commonService$.viewDataCompSongList = songList;
+    this._commonService$.listTitle = listTitle;
+    this._router$.navigate(['main/viewData']);
   }
 
   selectTopPick(topPick: Array<Type.TopPickSubType>, topPickID: number) {
