@@ -30,6 +30,7 @@ import { FooterComponent } from '../shared/components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import {MatMenuModule} from '@angular/material/menu';
 import { ViewDataComponent } from '../shared/components/view-data/view-data.component';
+import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { ViewDataComponent } from '../shared/components/view-data/view-data.comp
     MatInputModule,
     SharedModule,
     MatMenuModule,
+    MatTreeModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
