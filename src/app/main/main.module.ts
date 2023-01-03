@@ -29,6 +29,8 @@ import { BandPlayListComponent } from '../shared/components/band-play-list/band-
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import {MatMenuModule} from '@angular/material/menu';
+import { ViewDataComponent } from '../shared/components/view-data/view-data.component';
+import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import {MatMenuModule} from '@angular/material/menu';
     PlaylistContentComponent,
     BandPlayListComponent,
     FooterComponent,
+    ViewDataComponent,
   ],
   imports: [
     CommonModule,
@@ -61,6 +64,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatInputModule,
     SharedModule,
     MatMenuModule,
+    MatTreeModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

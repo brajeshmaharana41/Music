@@ -1,0 +1,59 @@
+.title{
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 18px;  
+    color: #0D2238;
+  }
+  .view_title{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+    color: #86909B;
+    text-decoration: none;
+  }
+//   .scroll{
+//     overflow: auto;
+//   }
+//   .scroll::-webkit-scrollbar{
+//     display: none;
+//   }
+  .allsong_bord{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    .img_song{
+      width: 80px;
+      height: 53px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .dec_song{
+      width: 100%;
+      height: 53px;
+      margin-bottom: 5px;
+      padding-left: 10px;
+      .song_title{
+        font-weight: 600;
+        font-size: 12px; 
+        font-family: 'Inter';
+        color: #0D2238;
+      }
+      .song_dec{
+        font-weight: 400;
+        font-size: 12px; 
+        font-family: 'Inter';
+        color: #86909B;   
+      }
+    }
+    .more_song{
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
