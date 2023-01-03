@@ -29,15 +29,21 @@ export class SidebarService {
     ['Onion', ['Yellow', 'White', 'Purple']],
   ]);
 
-  rootLevelNodes: string[] = ['Mood List'];
-  moodList: Type.MoodType[];
+  rootLevelNodes: string[] = [
+    'Mood List',
+    'Play List For You',
+    'Categories',
+    'Top Picks',
+    'Podcast',
+  ];
+  dashBoardData: any;
 
   /** Initial data from database */
   initialData(): DynamicFlatNode[] {
     this._mainService$.getDashboard().subscribe({
       next: (data) => {
         if (data && data.status === 200 && data.body && data.body.moodList) {
-          this.moodList = data.body.moodList;
+          this.dashBoardData = data.body;
         }
         console.log(data);
         // console.log(data);
@@ -49,20 +55,57 @@ export class SidebarService {
     );
   }
 
-  getChildren(node: any): Type.MoodType[] | undefined {
-    return this.moodList;
+  getChildren(node: DynamicFlatNode): any[] | undefined {
+    switch (node.item) {
+      case 'Play List For You':
+        return this.dashBoardData.playListForYou;
+      case 'Mood List':
+        return this.dashBoardData.moodList;
+      case 'Categories':
+        return this.dashBoardData.categories;
+      case 'Top Picks':
+        return [{ title: 'Artist' }, { title: 'Actor' }];
+      // return this.dashBoardData.topPicks;
+      case 'Podcast':
+        this.goToViewSongList(this.dashBoardData.podcast, 'Podcast');
+        return undefined;
+      default:
+        return undefined;
+    }
+    // return this.dashBoardData.moodList;
     // return this.dataMap.get(node);
   }
 
-  goToMoodSongList(node: DynamicFlatNode) {
-    let selectedMood = this.moodList.find((ele) => ele.title === node.item);
-    this._commonService$.viewDataCompSongList = selectedMood.songs;
-    this._commonService$.listTitle = selectedMood.title;
+  // hasChildren(node: DynamicFlatNode) {
+  //   switch (node.item) {
+  //     case 'Play List For You':
+  //       return this.dashBoardData.playListForYou;
+  //     case 'Mood List':
+  //       return this.dashBoardData.moodList;
+  //     case 'Categories':
+  //       return this.dashBoardData.categories;
+  //     case 'Top Picks':
+  //       return this.dashBoardData.topPicks;
+  //       case 'Podcast':
+  //         return null;
+  //   }
+  // }
+
+  getMoodSongList(node: DynamicFlatNode) {
+    let selectedMood = this.dashBoardData.moodList.find(
+      (ele) => ele.title === node.item
+    );
+    this.goToViewSongList(selectedMood.songs, selectedMood.title);
+  }
+  goToViewSongList(songList: Type.SongType[], title: string) {
+    this._commonService$.viewDataCompSongList = songList;
+    this._commonService$.listTitle = title;
     this._router$.navigate(['main/viewData']);
   }
 
-  isExpandable(node: string): boolean {
-    return false;
+  isExpandable(node: DynamicFlatNode): boolean {
+    return !!this.getChildren(node);
+    // return node.expandable;
     // return this.dataMap.has(node);
   }
 }
