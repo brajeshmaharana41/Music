@@ -71,7 +71,7 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
    * Toggle the node, remove from display list
    */
   toggleNode(node: DynamicFlatNode, expand: boolean) {
-    const children = this._database.getChildren(node.item);
+    const children = this._database.getChildren(node);
     const index = this.data.indexOf(node);
     if (!children || index < 0) {
       // If no children, or cannot find the node, no op
@@ -83,7 +83,7 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
     // setTimeout(() => {
     if (expand) {
       const nodes = children.map(
-        (moodObj: Type.MoodType) =>
+        (moodObj: any) =>
           new DynamicFlatNode(
             moodObj.title,
             node.level + 1,
