@@ -21,6 +21,11 @@
   }
   .icon_sidemenu{
     font-size: 22px;
+    color: #0D2238;
+  }
+  .icon_submenu{
+    font-size: 10px;
+    padding-top: 7px;
   }
   mat-expansion-panel {
   width: 251px;
@@ -84,7 +89,7 @@
     transform: rotate(180deg);
   }
   .mat-tree-node{
-    padding-left: 15px;
+    padding-left: 8px !important;
   }
 
   .example-tree-progress-bar {

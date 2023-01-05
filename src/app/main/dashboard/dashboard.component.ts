@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit {
   goToViewAll(songList: Type.SongType[], listTitle: string) {
     this._commonService$.viewDataCompSongList = songList;
     this._commonService$.listTitle = listTitle;
-    this._router$.navigate(['main/viewData']);
+    this._router$.navigate(['selectedUser/main/viewData']);
   }
 
   selectTopPick(topPick: Array<Type.TopPickSubType>, topPickID: number) {

@@ -1,52 +1,36 @@
 <mat-list class="mb-5 pb-5">
   <div fxLayout="row" fxLayoutAlign="start center">
     <div class="p-3">
-      <img
-        src="assets/Dhaka Record Logo_F 1.png"
-        alt=""
-        width="30"
-        height="30"
-      />
+      <img src="assets/Dhaka Record Logo_F 1.png" alt="" width="30" height="30" />
     </div>
     <div class="p-3">
       <span class="title">Dhaka Record</span>
     </div>
   </div>
   <mat-nav-list>
-    <a mat-list-item class="sidemenu_titles" routerLink="/"
-      ><mat-icon class="icon_sidemenu">home</mat-icon>Home</a
-    >
+    <a mat-list-item class="sidemenu_titles" routerLink="/selectedUser/main/home">
+      <!-- <mat-icon class="icon_sidemenu">home</mat-icon> -->
+      Home</a>
     <div>
       <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-        <mat-tree-node
-          (click)="database.getMoodSongList(node)"
-          *matTreeNodeDef="let node"
-          matTreeNodePadding
-        >
-          <button mat-icon-button disabled></button>
-          {{ node?.item }}
+        <mat-tree-node (click)="database.getMoodSongList(node)" mat-list-item *matTreeNodeDef="let node" matTreeNodePadding>
+          <a mat-list-item class="sidemenu_titles"><mat-icon class="icon_submenu">fiber_manual_record</mat-icon>{{ node?.item }}</a>
         </mat-tree-node>
-        <mat-tree-node
-          *matTreeNodeDef="let node; when: hasChild"
-          matTreeNodePadding
-        >
-          <button
-            mat-icon-button
-            [attr.aria-label]="'Toggle ' + node?.item"
-            matTreeNodeToggle
-          >
-            <mat-icon class="mat-icon-rtl-mirror">
-              {{
-                treeControl.isExpanded(node) ? "expand_more" : "chevron_right"
-              }}
-            </mat-icon>
-          </button>
-          {{ node?.item }}
-          <mat-progress-bar
-            *ngIf="node.isLoading"
-            mode="indeterminate"
-            class="example-tree-progress-bar"
-          ></mat-progress-bar>
+        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding
+          [attr.aria-label]="'Toggle ' + node?.item" matTreeNodeToggle>
+          <div class="mat-tree-node mat-list-item" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <!-- <mat-icon class="icon_sidemenu">library_music</mat-icon> -->
+              <span class="sidemenu_titles">{{ node?.item }}</span>
+            </div>
+            <div>
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'keyboard_arrow_up'}}
+              </mat-icon>
+            </div>
+          </div>
+          <mat-progress-bar *ngIf="node.isLoading" mode="indeterminate"
+            class="example-tree-progress-bar"></mat-progress-bar>
         </mat-tree-node>
       </mat-tree>
     </div>

@@ -100,7 +100,7 @@ export class SidebarService {
   goToViewSongList(songList: Type.SongType[], title: string) {
     this._commonService$.viewDataCompSongList = songList;
     this._commonService$.listTitle = title;
-    this._router$.navigate(['main/viewData']);
+    this._router$.navigate(['selectedUser/main/viewData']);
   }
 
   isExpandable(node: DynamicFlatNode): boolean {
