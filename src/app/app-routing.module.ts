@@ -12,14 +12,16 @@ const routes: Routes = [
   //   pathMatch: 'full',
   // },
   {
-    path: 'selectedUser',
+    path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+
   {
-    path: '',
-    redirectTo: 'selectedUser',
-    pathMatch: 'full',
+    path: 'main',
+    loadChildren: () => import('./main/main.module').then((m) => m.MainModule),
   },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth' },
 ];
 
 @NgModule({

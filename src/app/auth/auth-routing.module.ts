@@ -6,25 +6,26 @@ import { SelecteduserComponent } from './selecteduser/selecteduser.component';
 
 const routes: Routes = [
   {
+    path: 'selected-user',
+    component: SelecteduserComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'otp-verify',
+    component: OtpVerificationComponent,
+  },
+  {
     path: '',
-    component: SelecteduserComponent
-  },
-  {
-    path:'login',
-    component: LoginComponent
-  },
-  {
-    path: 'otpVerify',
-    component: OtpVerificationComponent
-  },
-  {
-    path: 'main',
-    loadChildren: () => import('../main/main.module').then((m) => m.MainModule),
+    redirectTo: 'selected-user',
+    pathMatch: 'full',
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AuthRoutingModule { }
+export class AuthRoutingModule {}
