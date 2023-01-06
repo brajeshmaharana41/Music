@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     public _router$: Router
   ) {}
   myControl = new FormControl<string | User>('');
-  options: User[] = [{ name: 'Mary' }, { name: 'Shelley' }, { name: 'Igor' }];
+  options: User[] = [{ name: 'Play List For You' }, { name: 'Categories' }, { name: 'Podcast' }];
   filteredOptions: Observable<User[]>;
   dashboardData: any;
   playlistTitle = [];
