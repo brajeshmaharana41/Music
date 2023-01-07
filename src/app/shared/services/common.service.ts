@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Track } from 'ngx-audio-player';
 import * as Type from '../type/main.type';
+import * as CommonType from '../type/common-type';
+import { HttpHandlerService } from './httphandler.service';
+import { API } from '../common/api';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +14,10 @@ export class CommonService {
   playList: Track[];
   viewDataCompSongList: Type.SongType[];
   listTitle: string;
-  constructor() {}
+  constructor(
+    private _httpService$: HttpHandlerService,
+    private _router$: Router
+  ) {}
   createPlayList(songs: Type.SongType[], i: number) {
     this.playList = songs.slice(i).map((ele: Type.SongType) => {
       return {
@@ -18,5 +26,17 @@ export class CommonService {
         artist: ele.artist,
       };
     });
+  }
+
+  getSongs(
+    params: CommonType.SearchSongParamType
+  ): Observable<CommonType.SearchSongAPIResponseType> {
+    return this._httpService$.get(API.Song.searchSong, {}, params);
+  }
+
+  goToViewSongList(songList: Type.SongType[], title: string) {
+    this.viewDataCompSongList = songList;
+    this.listTitle = title;
+    this._router$.navigate(['main/viewData']);
   }
 }

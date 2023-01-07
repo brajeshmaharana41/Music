@@ -67,7 +67,10 @@ export class SidebarService {
         return [{ title: 'Artist' }, { title: 'Actor' }];
       // return this.dashBoardData.topPicks;
       case 'Podcast':
-        this.goToViewSongList(this.dashBoardData.podcast, 'Podcast');
+        this._commonService$.goToViewSongList(
+          this.dashBoardData.podcast,
+          'Podcast'
+        );
         return undefined;
       default:
         return undefined;
@@ -95,12 +98,10 @@ export class SidebarService {
     let selectedMood = this.dashBoardData.moodList.find(
       (ele) => ele.title === node.item
     );
-    this.goToViewSongList(selectedMood.songs, selectedMood.title);
-  }
-  goToViewSongList(songList: Type.SongType[], title: string) {
-    this._commonService$.viewDataCompSongList = songList;
-    this._commonService$.listTitle = title;
-    this._router$.navigate(['selectedUser/main/viewData']);
+    this._commonService$.goToViewSongList(
+      selectedMood.songs,
+      selectedMood.title
+    );
   }
 
   isExpandable(node: DynamicFlatNode): boolean {

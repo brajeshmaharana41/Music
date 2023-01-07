@@ -1,14 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import * as Type from '../../shared/type/main.type';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MainService } from '../main.service';
 import { CommonService } from 'src/app/shared/services/common.service';
 import { Router } from '@angular/router';
-
+import * as CommonType from '../../shared/type/common-type';
+import { Constants } from 'src/app/shared/common/constant';
 export interface User {
   name: string;
 }
@@ -19,11 +19,6 @@ export interface User {
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(
-    private _mainService$: MainService,
-    public _commonService$: CommonService,
-    public _router$: Router
-  ) {}
   myControl = new FormControl<string | User>('');
   options: User[] = [{ name: 'Mary' }, { name: 'Shelley' }, { name: 'Igor' }];
   filteredOptions: Observable<User[]>;
@@ -34,6 +29,11 @@ export class DashboardComponent implements OnInit {
   selectedTopPick: Array<Type.TopPickSubType>;
   selectedToPickID: number;
   selectedTrending: Type.TrendingType;
+  constructor(
+    private _mainService$: MainService,
+    public _commonService$: CommonService,
+    public _router$: Router
+  ) {}
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
@@ -81,10 +81,23 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  goToViewAll(songList: Type.SongType[], listTitle: string) {
-    this._commonService$.viewDataCompSongList = songList;
-    this._commonService$.listTitle = listTitle;
-    this._router$.navigate(['selectedUser/main/viewData']);
+  // goToViewAll(songList: Type.SongType[], listTitle: string) {
+  //   this._commonService$.viewDataCompSongList = songList;
+  //   this._commonService$.listTitle = listTitle;
+  //   this._router$.navigate(['main/viewData']);
+  // }
+
+  getSongs(paramObj: CommonType.SearchSongParamType, title: string) {
+    this._commonService$.getSongs(paramObj).subscribe({
+      next: (res: CommonType.SearchSongAPIResponseType) => {
+        if (res.status === Constants.SUCCESSSTATUSCODE) {
+          this._commonService$.goToViewSongList(res.body, title);
+        }
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err.error);
+      },
+    });
   }
 
   selectTopPick(topPick: Array<Type.TopPickSubType>, topPickID: number) {
@@ -94,7 +107,7 @@ export class DashboardComponent implements OnInit {
   displayFn(user: User): string {
     return user && user.name ? user.name : '';
   }
-  
+
   private _filter(name: string): User[] {
     const filterValue = name.toLowerCase();
 
