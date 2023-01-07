@@ -7,4 +7,7 @@ export enum Constants {
   LOGGEDINUSER = 'user',
   LOGGEDINUSERID = 'userid',
   ACTIVESTRING = 'active',
+  PLAYLIST = 'playlist',
+  VIEWDATASONGLIST = 'viewdatasonglist',
+  LISTTITLE = 'listtitle',
 }
