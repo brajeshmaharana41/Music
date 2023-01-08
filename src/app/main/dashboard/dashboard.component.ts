@@ -20,7 +20,11 @@ export interface User {
 })
 export class DashboardComponent implements OnInit {
   myControl = new FormControl<string | User>('');
-  options: User[] = [{ name: 'Play List For You' }, { name: 'Categories' }, { name: 'Podcast' }];
+  options: User[] = [
+    { name: 'Play List For You' },
+    { name: 'Categories' },
+    { name: 'Podcast' },
+  ];
   filteredOptions: Observable<User[]>;
   dashboardData: any;
   playlistTitle = [];
@@ -87,22 +91,36 @@ export class DashboardComponent implements OnInit {
   //   this._router$.navigate(['main/viewData']);
   // }
 
-  getSongs(paramObj: CommonType.SearchSongParamType, title: string) {
-    this._commonService$.getSongs(paramObj).subscribe({
-      next: (res: CommonType.SearchSongAPIResponseType) => {
-        if (res.status === Constants.SUCCESSSTATUSCODE) {
-          this._commonService$.goToViewSongList(res.body, title);
-        }
-      },
-      error: (err: HttpErrorResponse) => {
-        console.log(err.error);
-      },
-    });
-  }
+  // getSongs(paramObj: CommonType.SearchSongParamType, title: string) {
+  //   this._commonService$.getSongs(paramObj).subscribe({
+  //     next: (res: CommonType.SearchSongAPIResponseType) => {
+  //       if (res.status === Constants.SUCCESSSTATUSCODE) {
+  //         this._commonService$.goToViewSongList(res.body, title);
+  //       }
+  //     },
+  //     error: (err: HttpErrorResponse) => {
+  //       console.log(err.error);
+  //     },
+  //   });
+  // }
 
   selectTopPick(topPick: Array<Type.TopPickSubType>, topPickID: number) {
     this.selectedTopPick = topPick;
     this.selectedToPickID = topPickID;
+  }
+
+  getTypeOfTopPick(selectedTopPickObj: any) {
+    if (this.selectedToPickID === 1) {
+      this._commonService$.getSongsToViewPage(
+        { artist: selectedTopPickObj?.id },
+        selectedTopPickObj?.title
+      );
+    } else {
+      this._commonService$.getSongsToViewPage(
+        { actor: selectedTopPickObj?.id },
+        selectedTopPickObj?.title
+      );
+    }
   }
   displayFn(user: User): string {
     return user && user.name ? user.name : '';

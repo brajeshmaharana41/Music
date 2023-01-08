@@ -7,6 +7,8 @@ import { CommonService } from './common.service';
 export class DynamicFlatNode {
   constructor(
     public item: string,
+    public id: string,
+    public parentNode: any,
     public level = 1,
     public expandable = false,
     public isLoading = false
@@ -51,7 +53,7 @@ export class SidebarService {
       error: (err: HttpErrorResponse) => console.log(err),
     });
     return this.rootLevelNodes.map(
-      (moodObj) => new DynamicFlatNode(moodObj, 0, true)
+      (moodObj) => new DynamicFlatNode(moodObj, '1', 'null', 0, true)
     );
   }
 
@@ -95,13 +97,45 @@ export class SidebarService {
   // }
 
   getMoodSongList(node: DynamicFlatNode) {
-    let selectedMood = this.dashBoardData.moodList.find(
-      (ele) => ele.title === node.item
-    );
-    this._commonService$.goToViewSongList(
-      selectedMood.songs,
-      selectedMood.title
-    );
+    console.log('node', node);
+    switch (node.parentNode) {
+      case 'Play List For You':
+        this._commonService$.getSongsToViewPage(
+          { playlist: node.id },
+          node.item
+        );
+        break;
+      // return this.dashBoardData.playListForYou;
+      case 'Mood List':
+        let selectedMood = this.dashBoardData.moodList.find(
+          (ele) => ele.title === node.item
+        );
+        this._commonService$.goToViewSongList(
+          selectedMood.songs,
+          selectedMood.title
+        );
+        break;
+      case 'Categories':
+        this._commonService$.getSongsToViewPage(
+          { category: node.id },
+          node.item
+        );
+        break;
+      // return this.dashBoardData.categories;
+      case 'Top Picks':
+        // this._commonService$.getSongsToViewPage({category:node.id},node.item);
+        // return [{ title: 'Artist' }, { title: 'Actor' }];
+        // return this.dashBoardData.topPicks;
+        break;
+      case 'Podcast':
+        // this._commonService$.goToViewSongList(
+        //   this.dashBoardData.podcast,
+        //   'Podcast'
+        // );
+        break;
+      default:
+        return undefined;
+    }
   }
 
   isExpandable(node: DynamicFlatNode): boolean {
