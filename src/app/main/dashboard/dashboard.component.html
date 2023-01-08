@@ -35,7 +35,7 @@
       mat-button
       class="btn_chip"
       [ngStyle]="{
-        background: selectedMood.id === moodLists.id ? '#fb8aff' : ''
+        background: selectedMood.id === moodLists.id ? '#FF0000' : ''
       }"
     >
       {{ moodLists?.title }}
@@ -331,7 +331,7 @@
       <button
         mat-button
         class="btn_chip"
-        [ngStyle]="{ background: selectedToPickID === 1 ? '#fb8aff' : '' }"
+        [ngStyle]="{ background: selectedToPickID === 1 ? '#FF0000' : '' }"
       >
         Artist
       </button>
@@ -340,7 +340,7 @@
       <button
         mat-button
         class="btn_chip"
-        [ngStyle]="{ background: selectedToPickID === 2 ? '#fb8aff' : '' }"
+        [ngStyle]="{ background: selectedToPickID === 2 ? '#FF0000' : '' }"
       >
         Actor
       </button>
@@ -380,7 +380,7 @@
   </div>
 </div>
 
-<div *ngIf="dashboardData?.podcast.length > 0" class="pt-3 mb-5">
+<div *ngIf="dashboardData?.podcast.length > 0" class="pt-3 mrgen_bton">
   <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
     <div>
       <span class="title"> Podcast </span>

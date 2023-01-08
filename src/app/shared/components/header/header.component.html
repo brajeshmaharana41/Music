@@ -67,12 +67,16 @@
             mat-icon-button
             aria-label="Example icon button with a vertical three dot icon"
             class="btn_icon"
+            [matMenuTriggerFor]="menu"
           >
             <mat-icon>keyboard_arrow_down</mat-icon>
           </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Edit Profile</button>
+          </mat-menu>
         </div>
         <mat-divider vertical style="height: 40px"></mat-divider>
-        <div>
+        <!-- <div>
           <button
             mat-icon-button
             aria-label="Example icon button with a vertical three dot icon"
@@ -80,7 +84,7 @@
           >
             <mat-icon>add_alert</mat-icon>
           </button>
-        </div>
+        </div> -->
         <div>
           <button
             mat-icon-button
@@ -88,7 +92,7 @@
             class="btn_icon"
             (click)="logout()"
           >
-            <mat-icon>exit_to_app</mat-icon>
+            <mat-icon class="head_icon">exit_to_app</mat-icon>
           </button>
         </div>
       </div>
@@ -112,20 +116,22 @@
     >
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="profile_pic">
-          <img src="../../../assets/Frame.jpg" alt="" class="img_profile" />
+          <img src="{{ userInfo?.profile_pic }}" alt="" class="img_profile" />
         </div>
         <div class="header_titles">
           <div fxLayout="column" fxLayoutAlign="start start">
             <div fxLayout="row" fxLayoutAlign="start center" class="pb-3">
-              <div class="pb-1">
+              <div class="p-1">
                 <span class="head_title">Listining is Everything</span>
               </div>
-              <div class="bord_pros">
+              <div class="bord_pros" *ngIf="
+              userInfo?.subscription_status === Constants?.ACTIVESTRING
+              ">
                 <span class="pro_forn">Pro</span>
               </div>
             </div>
-            <div style="position: absolute; padding-top: 20px">
-              <span class="head_subtitle">Welcome Istiaque!</span>
+            <div style="position: absolute; padding-top: 25px; padding-left: 3px;">
+              <span class="head_subtitle">Welcome {{ userInfo?.name }}!</span>
             </div>
           </div>
         </div>
@@ -138,8 +144,8 @@
       fxFlex.lg="50"
       fxFlex.xl="50"
     >
-      <div fxLayout="row" fxLayoutAlign="end center" class="pt-3">
-        <div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <!-- <div>
           <button mat-icon-button>
             <img src="../../../assets/piano.png" alt="" class="img_pad" />
           </button>
@@ -148,7 +154,15 @@
           <button mat-icon-button matPrefix>
             <img src="../../../assets/disc.png" alt="" class="img_pad" />
           </button>
-        </div>
+        </div> -->
+        <button
+        mat-icon-button
+        aria-label="Example icon button with a vertical three dot icon"
+        class="btn_icon"
+        (click)="logout()"
+      >
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
       </div>
     </div>
   </div>

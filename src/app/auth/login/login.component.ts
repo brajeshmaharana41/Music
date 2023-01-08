@@ -27,12 +27,12 @@ export class LoginComponent implements OnInit {
     private _router: Router,
     private _mainService$: MainService,
     private formBuilder: FormBuilder,
-    private _authService$: AuthService
+    private _authService$: AuthService,
   ) {}
 
   ngOnInit(): void {
     this.signInForm = this.formBuilder.group({
-      phone: ['9342514432', Validators.required],
+      phone: ['', Validators.required],
     });
   }
   onClickSubmit() {
@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
         next: (res: CommonType.HttResponseType) => {
           if (res.status === Constants.SUCCESSSTATUSCODE) {
             this._authService$.otpPhone = this.signInForm.value.phone;
+            alert('Otp sent to your register mobile number');
             this._router.navigate(['auth/otp-verify']);
           }
         },

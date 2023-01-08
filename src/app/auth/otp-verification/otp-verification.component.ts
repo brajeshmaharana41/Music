@@ -7,6 +7,7 @@ import * as AuthType from '../../shared/type/auth-type';
 import { Constants } from '../../shared/common/constant';
 import { AuthService } from '../auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgOtpInputConfig } from 'ng-otp-input';
 
 @Component({
   selector: 'app-otp-verification',
@@ -44,6 +45,7 @@ export class OtpVerificationComponent implements OnInit {
             JSON.stringify(res.body.user_data)
           );
           localStorage.setItem(Constants.LOGGEDINUSERID, res.body.user_id);
+          alert('OTP Verified Successfully')
           this._router.navigate(['main/home']);
         }
       },
@@ -52,4 +54,19 @@ export class OtpVerificationComponent implements OnInit {
       },
     });
   }
+  otpConfig :NgOtpInputConfig = {
+    allowNumbersOnly: true,
+    length: 4,
+    isPasswordInput: false,
+    disableAutoFocus: false,
+    placeholder: '',
+    inputStyles:{
+      'display':'flex'
+    },
+    containerStyles:{
+      'display':'flex'
+    },
+    inputClass:'each_input',
+    containerClass:'all_inputs'
+  };
 }
