@@ -7,6 +7,7 @@ import { API } from '../common/api';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Constants } from '../common/constant';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +44,19 @@ export class CommonService {
     params: CommonType.SearchSongParamType
   ): Observable<CommonType.SearchSongAPIResponseType> {
     return this._httpService$.get(API.Song.searchSong, {}, params);
+  }
+
+  getSongsToViewPage(paramObj: CommonType.SearchSongParamType, title: string) {
+    this.getSongs(paramObj).subscribe({
+      next: (res: CommonType.SearchSongAPIResponseType) => {
+        if (res.status === Constants.SUCCESSSTATUSCODE) {
+          this.goToViewSongList(res.body, title);
+        }
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err.error);
+      },
+    });
   }
 
   goToViewSongList(songList: Type.SongType[], title: string) {

@@ -267,7 +267,12 @@
     <div
       class="arts_padding"
       fxLayoutAlign="center center"
-      (click)="getSongs({ playlist: playsitsong?.id }, playsitsong?.title)"
+      (click)="
+        _commonService$.getSongsToViewPage(
+          { playlist: playsitsong?.id },
+          playsitsong?.title
+        )
+      "
       *ngFor="let playsitsong of dashboardData?.playListForYou"
     >
       <div fxLayout="column" fxLayoutAlign="center start">
@@ -300,7 +305,12 @@
     <div
       class="arts_padding"
       fxLayoutAlign="center center"
-      (click)="getSongs({ category: playsitsong?.id }, playsitsong?.title)"
+      (click)="
+        _commonService$.getSongsToViewPage(
+          { category: playsitsong?.id },
+          playsitsong?.title
+        )
+      "
       *ngFor="let playsitsong of dashboardData?.categories"
     >
       <div fxLayout="column" fxLayoutAlign="center start">
@@ -350,9 +360,7 @@
     <div
       class="arts_padding"
       fxLayoutAlign="center center"
-      (click)="
-        getSongs({ artist: selectedTopPickObj?.id }, selectedTopPickObj?.title)
-      "
+      (click)="getTypeOfTopPick(selectedTopPickObj)"
       *ngFor="let selectedTopPickObj of selectedTopPick | slice : 0 : 10"
     >
       <app-singers [artistData]="selectedTopPickObj"></app-singers>

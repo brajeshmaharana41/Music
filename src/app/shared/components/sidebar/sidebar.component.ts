@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 export class DynamicFlatNode {
   constructor(
     public item: string,
+    public id: string,
+    public parentNode: any,
     public level = 1,
     public expandable = false,
     public isLoading = false

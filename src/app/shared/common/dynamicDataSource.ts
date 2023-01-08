@@ -15,6 +15,8 @@ import * as Type from '../type/main.type';
 export class DynamicFlatNode {
   constructor(
     public item: string,
+    public id: string,
+    public parentNode: any,
     public level = 1,
     public expandable = false,
     public isLoading = false
@@ -71,6 +73,7 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
    * Toggle the node, remove from display list
    */
   toggleNode(node: DynamicFlatNode, expand: boolean) {
+    const parentNode: DynamicFlatNode = node;
     const children = this._database.getChildren(node);
     const index = this.data.indexOf(node);
     if (!children || index < 0) {
@@ -86,6 +89,8 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
         (moodObj: any) =>
           new DynamicFlatNode(
             moodObj.title,
+            moodObj.id,
+            parentNode.item,
             node.level + 1,
             this._database.isExpandable(moodObj.title)
           )
