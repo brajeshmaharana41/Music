@@ -65,12 +65,10 @@
 .exp-form{
     width: 100%;
     .example-form{
-        width: 70px;
         font-family: "Poppins";
-        font-weight: 500;
+        font-weight: 400;
+        font-size: 20px;
         border-radius: 30px;
-        text-align: center;
-        margin: 8px;
     }
 }
 ::ng-deep .mat-form-field-outline-start {
@@ -89,3 +87,13 @@
     border-radius: 0 30px 30px 0 !important;
     min-width: 30px !important;
   }
+  
+  ::ng-deep .each_input{
+    border-radius: 30px !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+  ::ng-deep .each_input:focus{
+    outline-style: solid;
+    outline-color: #FF0000;  
+}
