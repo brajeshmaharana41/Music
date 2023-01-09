@@ -33,7 +33,10 @@
             btn_chip_active: selectedNode?.id === node?.id
           }"
         >
-          <a mat-list-item class="sidemenu_titles"
+          <a
+            mat-list-item
+            class="sidemenu_titles"
+            [ngStyle]="{ color: selectedNode?.id === node?.id ? 'white' : '' }"
             ><mat-icon class="icon_submenu">fiber_manual_record</mat-icon
             >{{ node?.item }}</a
           >
