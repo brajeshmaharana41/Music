@@ -21,7 +21,7 @@ export class CommonService {
     private _router$: Router
   ) {
     if (localStorage.getItem(Constants.LISTTITLE)) {
-      this.playList = JSON.parse(localStorage.getItem(Constants.PLAYLIST));
+      // this.playList = JSON.parse(localStorage.getItem(Constants.PLAYLIST));
       this.viewDataCompSongList = JSON.parse(
         localStorage.getItem(Constants.VIEWDATASONGLIST)
       );

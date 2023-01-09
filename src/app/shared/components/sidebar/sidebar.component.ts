@@ -28,6 +28,8 @@ export class DynamicFlatNode {
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
+  // dashboardSelectedMood:Type.MoodType;
+  selectedNode: DynamicFlatNode;
   constructor(
     public database: SidebarService,
     public _commonService$: CommonService,
@@ -40,6 +42,16 @@ export class SidebarComponent implements OnInit {
     this.dataSource = new DynamicDataSource(this.treeControl, database);
 
     this.dataSource.data = database.initialData();
+
+    // this.database.selectedMood.subscribe({
+    //   next:(res)=>{
+    //     this.dashboardSelectedMood=res;
+    //   }
+    // })
+  }
+
+  selectNode(node: DynamicFlatNode) {
+    this.selectedNode = node;
   }
 
   treeControl: FlatTreeControl<DynamicFlatNode>;

@@ -33,9 +33,9 @@
   >
     <button
       mat-button
-      class="btn_chip"
-      [ngStyle]="{
-        background: selectedMood.id === moodLists.id ? '#FF0000' : ''
+      [ngClass]="{
+        btn_chip: selectedMood.id !== moodLists.id,
+        btn_chip_active: selectedMood.id === moodLists.id
       }"
     >
       {{ moodLists?.title }}
