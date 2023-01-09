@@ -95,3 +95,30 @@
   .example-tree-progress-bar {
     margin-left: 30px;
   }
+
+  .btn_chip{
+    background: #F4F8FB;
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 16px;
+    color: #0D2238;
+  }
+
+
+  .btn_chip:hover{
+    border: 1px solid #FF0000;
+    background: #FF0000;
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    }
+    
+    .btn_chip_active{
+    border: 1px solid #FF0000;
+    background: #FF0000;
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 16px;
+    color:white;
+    }

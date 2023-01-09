@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/main/main.service';
 import * as Type from '../type/main.type';
 import { CommonService } from './common.service';
+import { Subject } from 'rxjs';
+
 export class DynamicFlatNode {
   constructor(
     public item: string,
@@ -19,17 +21,13 @@ export class DynamicFlatNode {
   providedIn: 'root',
 })
 export class SidebarService {
-  constructor(
-    public _mainService$: MainService,
-    public _commonService$: CommonService,
-    public _router$: Router
-  ) {}
-  dataMap = new Map<string, string[]>([
-    ['Fruits', ['Apple', 'Orange', 'Banana']],
-    ['Vegetables', ['Tomato', 'Potato', 'Onion']],
-    ['Apple', ['Fuji', 'Macintosh']],
-    ['Onion', ['Yellow', 'White', 'Purple']],
-  ]);
+  // selectedMood=new Subject<Type.MoodType>();
+  // dataMap = new Map<string, string[]>([
+  //   ['Fruits', ['Apple', 'Orange', 'Banana']],
+  //   ['Vegetables', ['Tomato', 'Potato', 'Onion']],
+  //   ['Apple', ['Fuji', 'Macintosh']],
+  //   ['Onion', ['Yellow', 'White', 'Purple']],
+  // ]);
 
   rootLevelNodes: string[] = [
     'Mood List',
@@ -39,7 +37,11 @@ export class SidebarService {
     'Podcast',
   ];
   dashBoardData: any;
-
+  constructor(
+    public _mainService$: MainService,
+    public _commonService$: CommonService,
+    public _router$: Router
+  ) {}
   /** Initial data from database */
   initialData(): DynamicFlatNode[] {
     this._mainService$.getDashboard().subscribe({
@@ -73,7 +75,7 @@ export class SidebarService {
           this.dashBoardData.podcast,
           'Podcast'
         );
-        return undefined;
+        return null;
       default:
         return undefined;
     }
@@ -139,6 +141,7 @@ export class SidebarService {
   }
 
   isExpandable(node: DynamicFlatNode): boolean {
+    console.log(node);
     return !!this.getChildren(node);
     // return node.expandable;
     // return this.dataMap.has(node);
