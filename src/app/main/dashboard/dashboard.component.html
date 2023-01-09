@@ -352,7 +352,10 @@
       <button
         mat-button
         class="btn_chip"
-        [ngStyle]="{ background: selectedToPickID === 2 ? '#FF0000' : '' }"
+        [ngClass]="{
+          btn_chip: selectedToPickID !== 1,
+          btn_chip_active: selectedToPickID === 1
+        }"
       >
         Actor
       </button>
