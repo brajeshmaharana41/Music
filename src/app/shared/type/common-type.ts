@@ -24,3 +24,10 @@ export interface SearchSongAPIResponseType {
   status: number;
   totalRecord: number;
 }
+
+export interface TopPickPerson {
+  id: string;
+  img: string;
+  status: string;
+  title: string;
+}

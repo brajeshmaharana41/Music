@@ -1,201 +1,33 @@
 <div class="mrgen_bton">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
+    <div>
+      <span class="title"> {{ listType }} </span>
+    </div>
+  </div>
+  <div fxLayout="row wrap">
+    <div
+      fxFlex.xs="100"
+      *ngFor="let person of personList"
+      fxFlex.sm="100"
+      fxFlex.md="10"
+      fxFlex.lg="10"
+      fxFlex.xl="10"
+      class="p-2"
+    >
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <div class="pb-2">
+          <img
+            [src]="person?.img"
+            alt=""
+            width="100"
+            height="100"
+            class="img_rad"
+          />
+        </div>
         <div>
-            <span class="title">
-                Actor
-            </span>
+          <span class="sing_name">{{ person?.title }}</span>
         </div>
+      </div>
     </div>
-    <div fxLayout="row wrap">
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" >
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" >
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" >
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-        <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="10" fxFlex.xl="10" class="p-2" fxLayoutAlign="center center">
-            <div fxLayout="column" fxLayoutAlign="center center">
-                <div class="pb-2">
-                    <img src="assets/Frame 14.png" alt="" width="100" height="100" class="img_rad">
-                </div>
-                <div>
-                    <span class="sing_name">Sabina Yasmin</span>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

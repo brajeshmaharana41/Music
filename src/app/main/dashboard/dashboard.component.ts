@@ -9,6 +9,7 @@ import { CommonService } from 'src/app/shared/services/common.service';
 import { Router } from '@angular/router';
 import * as CommonType from '../../shared/type/common-type';
 import { Constants } from 'src/app/shared/common/constant';
+import { SidebarService } from 'src/app/shared/services/sidebar.service';
 export interface User {
   name: string;
 }
@@ -36,7 +37,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private _mainService$: MainService,
     public _commonService$: CommonService,
-    public _router$: Router
+    public _router$: Router,
+    public _sidebarService$: SidebarService
   ) {}
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -107,6 +109,19 @@ export class DashboardComponent implements OnInit {
   selectTopPick(topPick: Array<Type.TopPickSubType>, topPickID: number) {
     this.selectedTopPick = topPick;
     this.selectedToPickID = topPickID;
+  }
+
+  goToTopPickPage() {
+    this._router$.navigate([
+      `main/singerlist/${
+        this.selectedToPickID === 1 ? Constants.ARTIST : Constants.ACTOR
+      }`,
+    ]);
+    // setTimeout(() => {
+    //   this._sidebarService$.topPickChange.next(
+    //     this.selectedToPickID === 1 ? Constants.ARTIST : Constants.ACTOR
+    //   );
+    // }, 1000);
   }
 
   getTypeOfTopPick(selectedTopPickObj: any) {

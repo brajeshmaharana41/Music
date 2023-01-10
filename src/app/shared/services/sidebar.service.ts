@@ -28,7 +28,7 @@ export class SidebarService {
   //   ['Apple', ['Fuji', 'Macintosh']],
   //   ['Onion', ['Yellow', 'White', 'Purple']],
   // ]);
-
+  topPickChange = new Subject<string>();
   rootLevelNodes: string[] = [
     'Mood List',
     'Play List For You',
@@ -68,7 +68,10 @@ export class SidebarService {
       case 'Categories':
         return this.dashBoardData.categories;
       case 'Top Picks':
-        return [{ title: 'Artist' }, { title: 'Actor' }];
+        return [
+          { title: 'Artist', id: 1 },
+          { title: 'Actor', id: 2 },
+        ];
       // return this.dashBoardData.topPicks;
       case 'Podcast':
         this._commonService$.goToViewSongList(
@@ -125,8 +128,8 @@ export class SidebarService {
         break;
       // return this.dashBoardData.categories;
       case 'Top Picks':
-        // this._commonService$.getSongsToViewPage({category:node.id},node.item);
-        // return [{ title: 'Artist' }, { title: 'Actor' }];
+        this._router$.navigate([`main/singerlist/${node.item.toUpperCase()}`]);
+        this.topPickChange.next(node.item.toUpperCase());
         // return this.dashBoardData.topPicks;
         break;
       case 'Podcast':

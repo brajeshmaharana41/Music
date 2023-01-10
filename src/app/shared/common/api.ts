@@ -16,4 +16,9 @@ export class API {
   public static Song = {
     searchSong: `${baseURL}song/search/v1.0`,
   };
+
+  public static Admin = {
+    artistList: `${baseURL}admin/artists`,
+    actorList: `${baseURL}admin/actors`,
+  };
 }

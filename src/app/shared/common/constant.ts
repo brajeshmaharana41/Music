@@ -10,4 +10,7 @@ export enum Constants {
   PLAYLIST = 'playlist',
   VIEWDATASONGLIST = 'viewdatasonglist',
   LISTTITLE = 'listtitle',
+  PERSONLIST = 'personlist',
+  ARTIST = 'ARTIST',
+  ACTOR = 'ACTOR',
 }

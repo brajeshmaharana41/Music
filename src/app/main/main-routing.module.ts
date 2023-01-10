@@ -12,7 +12,7 @@ const routes: Routes = [
     children: [
       { path: 'home', component: DashboardComponent },
       { path: 'viewData', component: ViewDataComponent },
-      { path: 'singerist', component: SingerListComponent },
+      { path: 'singerlist/:listType', component: SingerListComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },

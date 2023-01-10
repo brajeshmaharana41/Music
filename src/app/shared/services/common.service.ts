@@ -4,7 +4,7 @@ import * as Type from '../type/main.type';
 import * as CommonType from '../type/common-type';
 import { HttpHandlerService } from './httphandler.service';
 import { API } from '../common/api';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Constants } from '../common/constant';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -46,6 +46,20 @@ export class CommonService {
     return this._httpService$.get(API.Song.searchSong, {}, params);
   }
 
+  getActorListAPI(): Observable<any> {
+    return this._httpService$.get(API.Admin.actorList, {
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2YwOGI3YTVkZmE5NmMyY2JkMTVhMiIsInVzZXJfdHlwZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBkaGFrYXJlY29yZC5jb20iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE2NzMzNjE3MDgsImV4cCI6MTY3NTk1MzcwOH0.gvpDSR4GO9i6dViJKCJoz6w8KCQhvwXMET7H87qvjW8',
+    });
+  }
+
+  getArtistListAPI(): Observable<any> {
+    return this._httpService$.get(API.Admin.artistList, {
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2YwOGI3YTVkZmE5NmMyY2JkMTVhMiIsInVzZXJfdHlwZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBkaGFrYXJlY29yZC5jb20iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE2NzMzNjE3MDgsImV4cCI6MTY3NTk1MzcwOH0.gvpDSR4GO9i6dViJKCJoz6w8KCQhvwXMET7H87qvjW8',
+    });
+  }
+
   getSongsToViewPage(paramObj: CommonType.SearchSongParamType, title: string) {
     this.getSongs(paramObj).subscribe({
       next: (res: CommonType.SearchSongAPIResponseType) => {
@@ -66,4 +80,10 @@ export class CommonService {
     localStorage.setItem(Constants.LISTTITLE, title);
     this._router$.navigate(['main/viewData']);
   }
+
+  // goToSingerListPage(personList: Type.TopPickSubType[]) {
+  //   this.personList = personList;
+  //   localStorage.setItem(Constants.PERSONLIST, JSON.stringify(personList));
+  //   this._router$.navigate(['main/viewData']);
+  // }
 }
