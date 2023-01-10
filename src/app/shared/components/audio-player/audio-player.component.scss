@@ -2,9 +2,9 @@
     position: fixed;
     z-index: 1;
     bottom: 0rem;
-    height: 50px;
-    width: 84%;
-    // padding-bottom: 20px;
+    height: 100px;
+    width: 82%;
+    padding-bottom: 20px;
   }
   .bord_songimg{
     display: flex;
@@ -16,9 +16,8 @@
     .card_header {
         position: fixed;
         z-index: 1;
-        bottom: 4rem;
-        height: 45px;
+        bottom: 3rem;
+        height: 118px;
         width: 100%;
-        // padding-bottom: 40px;
       }
   }
