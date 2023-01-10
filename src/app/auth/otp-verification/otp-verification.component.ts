@@ -29,7 +29,6 @@ export class OtpVerificationComponent implements OnInit {
     this.otp = new FormControl('1234', [Validators.required]);
   }
   onClickSubmit() {
-    console.log(this.otp.value, 'hI');
     if (this.otp && this.otp.valid) {
       this.verifyOTPAPI(this._authService$.otpPhone, this.otp.value);
     }
@@ -45,7 +44,7 @@ export class OtpVerificationComponent implements OnInit {
             JSON.stringify(res.body.user_data)
           );
           localStorage.setItem(Constants.LOGGEDINUSERID, res.body.user_id);
-          alert('OTP Verified Successfully')
+          alert('OTP Verified Successfully');
           this._router.navigate(['main/home']);
         }
       },
@@ -54,19 +53,19 @@ export class OtpVerificationComponent implements OnInit {
       },
     });
   }
-  otpConfig :NgOtpInputConfig = {
+  otpConfig: NgOtpInputConfig = {
     allowNumbersOnly: true,
     length: 4,
     isPasswordInput: false,
     disableAutoFocus: false,
     placeholder: '',
-    inputStyles:{
-      'display':'flex'
+    inputStyles: {
+      display: 'flex',
     },
-    containerStyles:{
-      'display':'flex'
+    containerStyles: {
+      display: 'flex',
     },
-    inputClass:'each_input',
-    containerClass:'all_inputs'
+    inputClass: 'each_input',
+    containerClass: 'all_inputs',
   };
 }

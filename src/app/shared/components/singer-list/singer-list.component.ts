@@ -47,7 +47,6 @@ export class SingerListComponent implements OnInit {
     this._commonService$.getActorListAPI().subscribe({
       next: (res: CommonType.HttResponseType) => {
         this.personList = res.body;
-        console.log(res);
       },
       error: (err: HttpErrorResponse) => {
         console.log(err.error);
@@ -59,11 +58,17 @@ export class SingerListComponent implements OnInit {
     this._commonService$.getArtistListAPI().subscribe({
       next: (res: CommonType.HttResponseType) => {
         this.personList = res.body;
-        console.log(res);
       },
       error: (err: HttpErrorResponse) => {
         console.log(err.error);
       },
     });
+  }
+
+  goToSongViewPage(person: CommonType.TopPickPerson) {
+    this._commonService$.getSongsToViewPage(
+      { [this.listType.toLowerCase()]: person.id },
+      person.title
+    );
   }
 }

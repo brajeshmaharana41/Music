@@ -54,8 +54,8 @@
       <a
         class="view_title"
         (click)="
-          _commonService$.goToViewSongList(
-            selectedMood?.songs,
+          _commonService$.getSongsToViewPage(
+            { mood: selectedMood?.id },
             selectedMood?.title
           )
         "

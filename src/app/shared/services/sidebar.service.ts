@@ -49,8 +49,6 @@ export class SidebarService {
         if (data && data.status === 200 && data.body && data.body.moodList) {
           this.dashBoardData = data.body;
         }
-        console.log(data);
-        // console.log(data);
       },
       error: (err: HttpErrorResponse) => console.log(err),
     });
@@ -102,7 +100,7 @@ export class SidebarService {
   // }
 
   getMoodSongList(node: DynamicFlatNode) {
-    console.log('node', node);
+    // console.log('node', node);
     switch (node.parentNode) {
       case 'Play List For You':
         this._commonService$.getSongsToViewPage(
@@ -112,13 +110,7 @@ export class SidebarService {
         break;
       // return this.dashBoardData.playListForYou;
       case 'Mood List':
-        let selectedMood = this.dashBoardData.moodList.find(
-          (ele) => ele.title === node.item
-        );
-        this._commonService$.goToViewSongList(
-          selectedMood.songs,
-          selectedMood.title
-        );
+        this._commonService$.getSongsToViewPage({ mood: node.id }, node.item);
         break;
       case 'Categories':
         this._commonService$.getSongsToViewPage(
@@ -144,7 +136,6 @@ export class SidebarService {
   }
 
   isExpandable(node: DynamicFlatNode): boolean {
-    console.log(node);
     return !!this.getChildren(node);
     // return node.expandable;
     // return this.dataMap.has(node);

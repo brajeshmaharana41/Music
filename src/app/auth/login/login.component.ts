@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
     });
   }
   onClickSubmit() {
-    console.log(this.signInForm.valid, 'hI');
     if (this.signInForm.valid) {
       this._mainService$.otpGeneration(this.signInForm.value.phone).subscribe({
         next: (res: CommonType.HttResponseType) => {

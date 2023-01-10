@@ -14,7 +14,6 @@ export class AuthTokenGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let token: any;
-    console.log(state.url);
     try {
       token = localStorage.getItem(Constants.SESSIONTOKENSTRING);
     } catch (e) {
@@ -35,7 +34,6 @@ export class NoAuthTokenGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let token: any;
-    console.log(state.url);
     try {
       token = localStorage.getItem(Constants.SESSIONTOKENSTRING);
     } catch (e) {

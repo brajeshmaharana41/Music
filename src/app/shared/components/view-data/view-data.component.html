@@ -2,14 +2,18 @@
   <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
     <div>
       <span class="title">
-        {{ _commonService$?.listTitle }}
+        {{ listTitle }}
       </span>
     </div>
   </div>
   <div fxLayout="row wrap">
     <div
-      fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50"
-      *ngFor="let song of _commonService$?.viewDataCompSongList; let i = index"
+      fxFlex.xs="100"
+      fxFlex.sm="100"
+      fxFlex.md="50"
+      fxFlex.lg="50"
+      fxFlex.xl="50"
+      *ngFor="let song of viewDataCompSongList; let i = index"
       class="p-2"
     >
       <div class="allsong_bord">
@@ -21,12 +25,7 @@
           fxLayout="column"
           fxLayoutAlign="space-around start"
           fxLayoutGap="gappx"
-          (click)="
-            _commonService$.createPlayList(
-              _commonService$?.viewDataCompSongList,
-              i
-            )
-          "
+          (click)="_commonService$.createPlayList(viewDataCompSongList, i)"
         >
           <div class="pb-1">
             <span class="song_title">{{ song?.title }}</span>

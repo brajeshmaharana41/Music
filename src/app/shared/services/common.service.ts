@@ -14,19 +14,20 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class CommonService {
   playList: Track[];
-  viewDataCompSongList: Type.SongType[];
-  listTitle: string;
+  viewPageDataChange = new Subject();
+  // viewDataCompSongList: Type.SongType[];
+  // listTitle: string;
   constructor(
     private _httpService$: HttpHandlerService,
     private _router$: Router
   ) {
-    if (localStorage.getItem(Constants.LISTTITLE)) {
-      // this.playList = JSON.parse(localStorage.getItem(Constants.PLAYLIST));
-      this.viewDataCompSongList = JSON.parse(
-        localStorage.getItem(Constants.VIEWDATASONGLIST)
-      );
-      this.listTitle = localStorage.getItem(Constants.LISTTITLE);
-    }
+    // if (localStorage.getItem(Constants.LISTTITLE)) {
+    //   // this.playList = JSON.parse(localStorage.getItem(Constants.PLAYLIST));
+    //   this.viewDataCompSongList = JSON.parse(
+    //     localStorage.getItem(Constants.VIEWDATASONGLIST)
+    //   );
+    //   this.listTitle = localStorage.getItem(Constants.LISTTITLE);
+    // }
   }
 
   createPlayList(songs: Type.SongType[], i: number) {
@@ -61,24 +62,18 @@ export class CommonService {
   }
 
   getSongsToViewPage(paramObj: CommonType.SearchSongParamType, title: string) {
-    this.getSongs(paramObj).subscribe({
-      next: (res: CommonType.SearchSongAPIResponseType) => {
-        if (res.status === Constants.SUCCESSSTATUSCODE) {
-          this.goToViewSongList(res.body, title);
-        }
-      },
-      error: (err: HttpErrorResponse) => {
-        console.log(err.error);
-      },
-    });
+    localStorage.setItem(Constants.VIEWPAGEPARAM, JSON.stringify(paramObj));
+    localStorage.setItem(Constants.LISTTITLE, title);
+    this.viewPageDataChange.next({ paramObj, title });
+    this._router$.navigate(['main/viewData']);
   }
 
   goToViewSongList(songList: Type.SongType[], title: string) {
-    this.viewDataCompSongList = songList;
-    localStorage.setItem(Constants.VIEWDATASONGLIST, JSON.stringify(songList));
-    this.listTitle = title;
-    localStorage.setItem(Constants.LISTTITLE, title);
-    this._router$.navigate(['main/viewData']);
+    // this.viewDataCompSongList = songList;
+    // localStorage.setItem(Constants.VIEWDATASONGLIST, JSON.stringify(songList));
+    // this.listTitle = title;
+    // localStorage.setItem(Constants.LISTTITLE, title);
+    // this._router$.navigate(['main/viewData']);
   }
 
   // goToSingerListPage(personList: Type.TopPickSubType[]) {

@@ -13,4 +13,5 @@ export enum Constants {
   PERSONLIST = 'personlist',
   ARTIST = 'ARTIST',
   ACTOR = 'ACTOR',
+  VIEWPAGEPARAM = 'viewpageparam',
 }

@@ -52,7 +52,6 @@ export class SidebarComponent implements OnInit {
 
   selectNode(node: DynamicFlatNode) {
     this.selectedNode = node;
-    console.log(this.selectedNode);
   }
 
   treeControl: FlatTreeControl<DynamicFlatNode>;
