@@ -11,7 +11,7 @@ export interface SearchSongParamType {
   mood?: string;
   made_for_you?: string;
   skip?: number;
-  limit?: number;
+  limit?: number | string;
   category?: string;
   artist?: string;
   actor?: string;

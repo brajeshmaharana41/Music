@@ -36,12 +36,16 @@ export class ViewDataComponent implements OnInit {
         console.log(res);
         this.paramObj = res.paramObj;
         this.listTitle = res.title;
-        this, this.getViewPageData(this.paramObj);
+        this.getViewPageData(this.paramObj);
       },
     });
   }
 
   getViewPageData(paramObj: CommonType.SearchSongParamType) {
+    if (paramObj.mood && paramObj.mood.toLowerCase() === 'all') {
+      paramObj.mood = '';
+      paramObj.limit = 'all';
+    }
     this._commonService$.getSongs(paramObj).subscribe({
       next: (res: CommonType.SearchSongAPIResponseType) => {
         if (res.status === Constants.SUCCESSSTATUSCODE) {
