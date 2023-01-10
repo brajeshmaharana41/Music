@@ -25,12 +25,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SingersComponent } from '../shared/components/singers/singers.component';
 import { PlaylistContentComponent } from '../shared/components/playlist-content/playlist-content.component';
-import { BandPlayListComponent } from '../shared/components/band-play-list/band-play-list.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import {MatMenuModule} from '@angular/material/menu';
 import { ViewDataComponent } from '../shared/components/view-data/view-data.component';
 import {MatTreeModule} from '@angular/material/tree';
+import { SingerListComponent } from '../shared/components/singer-list/singer-list.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +40,9 @@ import {MatTreeModule} from '@angular/material/tree';
     SidebarComponent,
     SingersComponent,
     PlaylistContentComponent,
-    BandPlayListComponent,
     FooterComponent,
     ViewDataComponent,
+    SingerListComponent
   ],
   imports: [
     CommonModule,
