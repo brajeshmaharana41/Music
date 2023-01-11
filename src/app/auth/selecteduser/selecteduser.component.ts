@@ -7,11 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./selecteduser.component.scss'],
 })
 export class SelecteduserComponent implements OnInit {
+
   constructor(private _router$: Router) {}
 
   ngOnInit(): void {}
 
   goToLogin() {
     this._router$.navigate(['auth/login']);
+  }
+  goToInternational() {
+    this._router$.navigate(['auth/signupOrLogin']);
   }
 }

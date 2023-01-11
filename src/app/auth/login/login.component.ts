@@ -25,14 +25,14 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _mainService$: MainService,
     private formBuilder: FormBuilder,
+    private _mainService$: MainService,
     private _authService$: AuthService
   ) {}
 
   ngOnInit(): void {
     this.signInForm = this.formBuilder.group({
-      phone: ['9342514432', Validators.required],
+      phone: ['', Validators.required],
     });
   }
   onClickSubmit() {

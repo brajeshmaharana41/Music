@@ -6,16 +6,16 @@
   </div>
   <div fxLayout="row wrap">
     <div
-      fxFlex.xs="100"
+      fxFlex.xs="50"
       *ngFor="let person of personList"
-      fxFlex.sm="100"
-      fxFlex.md="10"
-      fxFlex.lg="10"
+      fxFlex.sm="33"
+      fxFlex.md="20"
+      fxFlex.lg="12"
       fxFlex.xl="10"
       class="p-2"
       (click)="goToSongViewPage(person)"
     >
-      <div fxLayout="column" fxLayoutAlign="center center">
+      <div fxLayout="column" fxLayoutAlign="center center" style="cursor: pointer;">
         <div class="pb-2">
           <img
             [src]="person?.img"
