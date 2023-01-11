@@ -12,6 +12,9 @@ export class SelecteduserComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  goToBangladeshi() {
+    this._router$.navigate(['auth/signupMobile']);
+  }
   goToLogin() {
     this._router$.navigate(['auth/login']);
   }
