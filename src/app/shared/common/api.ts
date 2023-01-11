@@ -1,6 +1,7 @@
 import { environment } from '../../../environments/environment';
 
 const baseURL = environment.baseURL;
+const baseURL2 = environment.baseURL2;
 export class API {
   public static Auth = {};
 
@@ -11,6 +12,8 @@ export class API {
   public static User = {
     otpGeneration: `${baseURL}user/otp-generation`,
     otpValidation: `${baseURL}user/otp-validation`,
+    signUp: `${baseURL}user/signup`,
+    signinByEmail: `${baseURL2}user/login`,
   };
 
   public static Song = {

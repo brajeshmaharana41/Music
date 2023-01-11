@@ -1,56 +1,113 @@
 <div>
-    <div fxLayout="row wrap">
-      <div fxHide fxShow.gt-sm fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="40" fxFlex.xl="40"
-        class="background">
-        <img src="assets/splaceImage.png" alt="" class="splaceSize" />
-      </div>
-      <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="60" fxFlex.xl="60" class="background">
-        <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
-          <div>
-            <img src="assets/Dhaka Record Logo_F 2.png" alt="" />
-          </div>
+  <div fxLayout="row wrap">
+    <div
+      fxHide
+      fxShow.gt-sm
+      fxFlex.xs="100"
+      fxFlex.sm="100"
+      fxFlex.md="50"
+      fxFlex.lg="40"
+      fxFlex.xl="40"
+      class="background"
+    >
+      <img src="assets/splaceImage.png" alt="" class="splaceSize" />
+    </div>
+    <div
+      fxFlex.xs="100"
+      fxFlex.sm="100"
+      fxFlex.md="50"
+      fxFlex.lg="60"
+      fxFlex.xl="60"
+      class="background"
+    >
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+        <div>
+          <img src="assets/Dhaka Record Logo_F 2.png" alt="" />
         </div>
-        <!-- <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+      </div>
+      <!-- <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
           <div class="splace_dec">
             <span class="head_title">Welcome back! Glad to see you, Again!</span>
           </div>
         </div> -->
-        <form class="exp-form" [formGroup]="ProfileForm" (ngSubmit)="onClickSubmit()">
-          <div fxLayout="column" fxLayoutAlign="center center" class="pt-5">
-            <mat-form-field class="example-form" appearance="outline">
-              <input type="text" matInput placeholder="Name" formControlName="name" />
-              <mat-error *ngIf="ProfileForm.controls['name'].invalid">Invalid input</mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-form" appearance="outline">
-                <input type="text" matInput placeholder="Date of BIrth" formControlName="dateofbirth" />
-                <mat-error *ngIf="ProfileForm.controls['dateofbirth'].invalid">Invalid input</mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-form" appearance="outline">
-                <mat-select placeholder="Gender" formControlName="gender">
-                  <mat-option value="volvo">Male</mat-option>
-                  <mat-option value="audi">Female</mat-option>
-                </mat-select>
-                <mat-error *ngIf="ProfileForm.controls['gender'].invalid">Invalid input</mat-error>
-              </mat-form-field>
-            <mat-form-field class="example-form" appearance="outline">
-                <input type="text" matInput placeholder="Mobile" formControlName="phone" />
-                <mat-error *ngIf="ProfileForm.controls['phone'].invalid">Invalid input</mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-form" appearance="outline">
-                <input type="text" matInput placeholder="Country" formControlName="country" />
-                <mat-error *ngIf="ProfileForm.controls['country'].invalid">Invalid input</mat-error>
-            </mat-form-field>
-          </div>
-          <div fxLayout="row" fxLayoutAlign="center center" class="pt-2">
-            <button mat-button class="splace_btn" type="submit">Continue</button>
-          </div>
-        </form>
-        <div fxLayout="row" fxLayoutAlign="center center" class="pt-3">
-          <div class="splace_enddec">
-            <span class="head_enddes">By continuing you are indicating that you agree to the Terms and
-              Privacy Policy.</span>
-          </div>
+      <form
+        class="exp-form"
+        [formGroup]="ProfileForm"
+        (ngSubmit)="onClickSubmit()"
+      >
+        <div fxLayout="column" fxLayoutAlign="center center" class="pt-5">
+          <mat-form-field class="example-form" appearance="outline">
+            <input
+              type="text"
+              matInput
+              placeholder="Name"
+              formControlName="name"
+            />
+            <mat-error *ngIf="ProfileForm.controls['name'].invalid"
+              >Invalid input</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field class="example-form" appearance="outline">
+            <input
+              type="text"
+              matInput
+              placeholder="Date of BIrth"
+              formControlName="dateofbirth"
+              [matDatepicker]="picker"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="ProfileForm.controls['dateofbirth'].invalid"
+              >Invalid input</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field class="example-form" appearance="outline">
+            <mat-select placeholder="Gender" formControlName="gender">
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female</mat-option>
+            </mat-select>
+            <mat-error *ngIf="ProfileForm.controls['gender'].invalid"
+              >Invalid input</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field class="example-form" appearance="outline">
+            <input
+              type="text"
+              matInput
+              placeholder="Mobile"
+              formControlName="phone"
+            />
+            <mat-error *ngIf="ProfileForm.controls['phone'].invalid"
+              >Invalid input</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field class="example-form" appearance="outline">
+            <input
+              type="text"
+              matInput
+              placeholder="Country"
+              formControlName="country"
+            />
+            <mat-error *ngIf="ProfileForm.controls['country'].invalid"
+              >Invalid input</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="pt-2">
+          <button mat-button class="splace_btn" type="submit">Continue</button>
+        </div>
+      </form>
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-3">
+        <div class="splace_enddec">
+          <span class="head_enddes"
+            >By continuing you are indicating that you agree to the Terms and
+            Privacy Policy.</span
+          >
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from 'src/app/main/main.service';
 import * as CommonType from '../../shared/type/common-type';
 import { Constants } from '../../shared/common/constant';
@@ -22,13 +22,16 @@ export class LoginComponent implements OnInit {
   hide = true;
   loginstatus = false;
   ShowRoomId: any;
-
+  signUpORSignin: '1' | '2'; // 1 for signup and 2 for signin
   constructor(
     private _router: Router,
     private formBuilder: FormBuilder,
     private _mainService$: MainService,
-    private _authService$: AuthService
-  ) {}
+    private _authService$: AuthService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.signUpORSignin = this.activatedRoute.snapshot.params['id'];
+  }
 
   ngOnInit(): void {
     this.signInForm = this.formBuilder.group({
@@ -37,12 +40,12 @@ export class LoginComponent implements OnInit {
   }
   onClickSubmit() {
     if (this.signInForm.valid) {
-      this._mainService$.otpGeneration(this.signInForm.value.phone).subscribe({
+      this._authService$.otpGeneration(this.signInForm.value.phone).subscribe({
         next: (res: CommonType.HttResponseType) => {
           if (res.status === Constants.SUCCESSSTATUSCODE) {
             this._authService$.otpPhone = this.signInForm.value.phone;
             alert('Otp sent to your register mobile number');
-            this._router.navigate(['auth/otp-verify']);
+            this._router.navigate([`auth/otp-verify/${this.signUpORSignin}`]);
           }
         },
         error: (err: HttpErrorResponse) => {

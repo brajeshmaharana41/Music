@@ -14,4 +14,7 @@ export enum Constants {
   ARTIST = 'ARTIST',
   ACTOR = 'ACTOR',
   VIEWPAGEPARAM = 'viewpageparam',
+  INITIALSIGNUPDATA = 'signupdata',
+  USERTYPE = 'usertype',
+  PHONE = 'phone',
 }
