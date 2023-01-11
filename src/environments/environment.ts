@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseURL:'http://3.111.212.219:3002/api/v1/'
+  baseURL: 'http://3.111.212.219:3002/api/v1/',
+  baseURL2: 'http://65.1.94.171:3002/api/v1/',
 };
 
 /*

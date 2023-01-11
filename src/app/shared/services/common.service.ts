@@ -68,6 +68,15 @@ export class CommonService {
     this._router$.navigate(['main/viewData']);
   }
 
+  storeSessionInfo(res: CommonType.HttResponseType) {
+    localStorage.setItem(Constants.SESSIONTOKENSTRING, res.body.token);
+    localStorage.setItem(
+      Constants.LOGGEDINUSER,
+      JSON.stringify(res.body.user_data)
+    );
+    localStorage.setItem(Constants.LOGGEDINUSERID, res.body.user_id);
+  }
+
   goToViewSongList(songList: Type.SongType[], title: string) {
     // this.viewDataCompSongList = songList;
     // localStorage.setItem(Constants.VIEWDATASONGLIST, JSON.stringify(songList));

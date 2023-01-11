@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from 'src/app/main/main.service';
 import * as CommonType from '../../shared/type/common-type';
 import * as AuthType from '../../shared/type/auth-type';
@@ -8,6 +8,7 @@ import { Constants } from '../../shared/common/constant';
 import { AuthService } from '../auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgOtpInputConfig } from 'ng-otp-input';
+import { CommonService } from 'src/app/shared/services/common.service';
 
 @Component({
   selector: 'app-otp-verification',
@@ -19,31 +20,36 @@ export class OtpVerificationComponent implements OnInit {
   hide = true;
   loginstatus = false;
   ShowRoomId: any;
+  signUpORSignin: '1' | '2'; // 1 for signup and 2 for signin
   constructor(
     private _router: Router,
     private _mainService$: MainService,
-    private _authService$: AuthService
-  ) {}
+    private _authService$: AuthService,
+    private _commonService$: CommonService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.signUpORSignin = this.activatedRoute.snapshot.params['id'];
+  }
 
   ngOnInit(): void {
     this.otp = new FormControl('1234', [Validators.required]);
   }
   onClickSubmit() {
     if (this.otp && this.otp.valid) {
-      this.verifyOTPAPI(this._authService$.otpPhone, this.otp.value);
+      if (this.signUpORSignin === '1') {
+        this._router.navigate(['auth/profileUpdate']);
+      } else {
+        this.verifyOTPAPI(this._authService$.otpPhone, this.otp.value);
+      }
     }
   }
 
   verifyOTPAPI(otpPhone: string, otp: string) {
-    this._mainService$.otpVerification(otpPhone, otp).subscribe({
+    this._authService$.otpVerification(otpPhone, otp).subscribe({
       next: (res: AuthType.LoginResponseType) => {
         if (res && res.status === Constants.SUCCESSSTATUSCODE) {
-          localStorage.setItem(Constants.SESSIONTOKENSTRING, res.body.token);
-          localStorage.setItem(
-            Constants.LOGGEDINUSER,
-            JSON.stringify(res.body.user_data)
-          );
-          localStorage.setItem(Constants.LOGGEDINUSERID, res.body.user_id);
+          localStorage.setItem(Constants.INITIALSIGNUPDATA, otpPhone);
+          this._commonService$.storeSessionInfo(res);
           alert('OTP Verified Successfully');
           this._router.navigate(['main/home']);
         }

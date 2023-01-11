@@ -15,19 +15,19 @@ const routes: Routes = [
     component: SelecteduserComponent,
   },
   {
-    path: 'login',
+    path: 'login/:id',
     component: LoginComponent,
   },
   {
-    path: 'otp-verify',
+    path: 'otp-verify/:id',
     component: OtpVerificationComponent,
   },
   {
-    path: 'signupOrLogin',
+    path: 'signupOrLogin', //1 for international and 2 for bangladeshi
     component: SignUpLoginComponent,
   },
   {
-    path: 'signupEmail',
+    path: 'signupEmail/:id', //1 for signup and 2 for signin
     component: SignUpEmailComponent,
   },
   {
@@ -39,7 +39,7 @@ const routes: Routes = [
     component: SignUpMobileComponent,
   },
   {
-    path: 'profileUpdate',
+    path: 'profileUpdate/:id', //1 for international and 2 for bangladeshi
     component: ProfileUpdateComponent,
   },
   {
