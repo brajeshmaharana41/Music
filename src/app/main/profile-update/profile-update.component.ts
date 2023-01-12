@@ -15,7 +15,8 @@ import { MainService } from '../main.service';
   styleUrls: ['./profile-update.component.scss'],
 })
 export class ProfileUpdateComponent implements OnInit {
-  dataimage = '';
+  dataimage: File | string;
+  rawImage: File;
   ProfileForm: FormGroup;
   userData: BodyUserDataType;
   constructor(
@@ -25,6 +26,7 @@ export class ProfileUpdateComponent implements OnInit {
     private _mainService$: MainService
   ) {
     this.userData = JSON.parse(localStorage.getItem(Constants.LOGGEDINUSER));
+    this.dataimage = this.userData.profile_pic;
   }
 
   ngOnInit(): void {
@@ -68,18 +70,19 @@ export class ProfileUpdateComponent implements OnInit {
     form.append('name', data.name);
     // form.append('country', data.country);
     // form.append('dob', data.dateofbirth);
+    form.append('file', this.rawImage);
     form.append('gender', data.gender);
     return form;
   }
   uploadFileEvt(imgFile: any) {
     if (imgFile.target.files && imgFile.target.files[0]) {
       var reader = new FileReader();
-
+      this.rawImage = imgFile.target.files[0];
       reader.readAsDataURL(imgFile.target.files[0]);
 
-      reader.onload = (imgFile: any) => { 
+      reader.onload = (imgFile: any) => {
         this.dataimage = imgFile.target.result;
-      }
+      };
     }
   }
 }
