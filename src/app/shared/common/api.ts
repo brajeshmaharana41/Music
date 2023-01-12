@@ -14,6 +14,7 @@ export class API {
     signUp: `${baseURL}user/signup`,
     signinByEmail: `${baseURL}user/login`,
     profileUpdate: `${baseURL}user/profile/update`,
+    userDetails: `${baseURL}user/profile/details`,
   };
 
   public static Song = {

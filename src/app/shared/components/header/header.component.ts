@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
       this.userInfo = JSON.parse(localStorage.getItem(Constants.LOGGEDINUSER));
     });
     this._commonService$.userUpdated.next('');
+    console.log(this.userInfo);
   }
 
   logout() {
