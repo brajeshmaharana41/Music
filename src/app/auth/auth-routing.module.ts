@@ -39,7 +39,7 @@ const routes: Routes = [
     component: SignUpMobileComponent,
   },
   {
-    path: 'profileUpdate/:id', //1 for international and 2 for bangladeshi
+    path: 'profileUpdate', //1 for international and 2 for bangladeshi
     component: ProfileUpdateComponent,
   },
   {
