@@ -15,6 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class CommonService {
   playList: Track[];
   viewPageDataChange = new Subject();
+  userUpdated = new Subject();
   // viewDataCompSongList: Type.SongType[];
   // listTitle: string;
   constructor(
