@@ -1,40 +1,29 @@
 <div>
   <div fxLayout="row wrap">
     <div
-      fxHide
-      fxShow.gt-sm
       fxFlex.xs="100"
       fxFlex.sm="100"
-      fxFlex.md="50"
-      fxFlex.lg="40"
-      fxFlex.xl="40"
+      fxFlex.md="100"
+      fxFlex.lg="100"
+      fxFlex.xl="100"
       class="background"
     >
-      <img src="assets/splaceImage.png" alt="" class="splaceSize" />
-    </div>
-    <div
-      fxFlex.xs="100"
-      fxFlex.sm="100"
-      fxFlex.md="50"
-      fxFlex.lg="60"
-      fxFlex.xl="60"
-      class="background"
-    >
-      <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
-        <div>
-          <img src="assets/Dhaka Record Logo_F 2.png" alt="" />
-        </div>
-      </div>
-      <!-- <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
-          <div class="splace_dec">
-            <span class="head_title">Welcome back! Glad to see you, Again!</span>
-          </div>
-        </div> -->
-      <form
+    <form
         class="exp-form"
         [formGroup]="ProfileForm"
         (ngSubmit)="onClickSubmit()"
       >
+      <div fxLayout="column" fxLayoutAlign="center center" class="pt-4">
+        <div class="file-input-wrapper">
+          <input type="file" class="rev-uplode" multiple="multiple"
+          id="avatar" name="avatar" (change)="uploadFileEvt($event)"
+          accept="image/*">
+        </div>
+          <div class="account-icon-wid">
+              <img [src]="dataimage ? dataimage : 'https://cdn.iconscout.com/icon/free/png-256/add-person-1780869-1514184.png'" width="100px" height="100px"> 
+          </div>
+      </div>
+      
         <div fxLayout="column" fxLayoutAlign="center center" class="pt-5">
           <mat-form-field class="example-form" appearance="outline">
             <input

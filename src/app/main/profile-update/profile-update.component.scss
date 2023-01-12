@@ -91,3 +91,22 @@
   .example-container mat-form-field + mat-form-field {
     margin-left: 8px;
   }
+  .rev-uplode{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+.file-input-wrapper {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    cursor: pointer !important;
+  }
+  
+  .file-input-wrapper>input[type="file"] {
+    font-size: 40px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }

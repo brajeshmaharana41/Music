@@ -15,6 +15,7 @@ import { MainService } from '../main.service';
   styleUrls: ['./profile-update.component.scss'],
 })
 export class ProfileUpdateComponent implements OnInit {
+  dataimage = '';
   ProfileForm: FormGroup;
   userData: BodyUserDataType;
   constructor(
@@ -69,5 +70,16 @@ export class ProfileUpdateComponent implements OnInit {
     // form.append('dob', data.dateofbirth);
     form.append('gender', data.gender);
     return form;
+  }
+  uploadFileEvt(imgFile: any) {
+    if (imgFile.target.files && imgFile.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(imgFile.target.files[0]);
+
+      reader.onload = (imgFile: any) => { 
+        this.dataimage = imgFile.target.result;
+      }
+    }
   }
 }
