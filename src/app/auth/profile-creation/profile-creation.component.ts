@@ -14,7 +14,8 @@ import { AuthService } from '../auth.service';
 })
 export class ProfileCreationComponent implements OnInit {
   ProfileForm: FormGroup;
-  dataimage = '';
+  dataimage: File | string;
+  rawImage: File;
   profilePageRoutedFromId: string; // 1 is for international and 2 is for Bangladesh
   constructor(
     private _router: Router,
@@ -72,6 +73,7 @@ export class ProfileCreationComponent implements OnInit {
     form.append('country', data.country);
     form.append('dob', data.dateofbirth);
     form.append('gender', data.gender);
+    form.append('file', this.rawImage);
     if (this.profilePageRoutedFromId === '1') {
       form.append('email', preData.email);
       form.append('password', preData.password);
@@ -82,13 +84,14 @@ export class ProfileCreationComponent implements OnInit {
   }
   uploadFileEvt(imgFile: any) {
     if (imgFile.target.files && imgFile.target.files[0]) {
+      this.rawImage = imgFile.target.files[0];
       var reader = new FileReader();
 
       reader.readAsDataURL(imgFile.target.files[0]);
 
-      reader.onload = (imgFile: any) => { 
+      reader.onload = (imgFile: any) => {
         this.dataimage = imgFile.target.result;
-      }
+      };
     }
   }
 }
