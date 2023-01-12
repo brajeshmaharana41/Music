@@ -39,7 +39,10 @@ export class OtpVerificationComponent implements OnInit {
       if (this.signUpORSignin === '1') {
         this._router.navigate(['auth/profileUpdate']);
       } else {
-        this.verifyOTPAPI(this._authService$.otpPhone, this.otp.value);
+        this.verifyOTPAPI(
+          localStorage.getItem(Constants.INITIALSIGNUPDATA),
+          this.otp.value
+        );
       }
     }
   }
@@ -50,7 +53,6 @@ export class OtpVerificationComponent implements OnInit {
         if (res && res.status === Constants.SUCCESSSTATUSCODE) {
           localStorage.setItem(Constants.INITIALSIGNUPDATA, otpPhone);
           this._commonService$.storeSessionInfo(res);
-          alert('OTP Verified Successfully');
           this._router.navigate(['main/home']);
         }
       },

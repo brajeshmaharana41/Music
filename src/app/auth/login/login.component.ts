@@ -43,8 +43,11 @@ export class LoginComponent implements OnInit {
       this._authService$.otpGeneration(this.signInForm.value.phone).subscribe({
         next: (res: CommonType.HttResponseType) => {
           if (res.status === Constants.SUCCESSSTATUSCODE) {
-            this._authService$.otpPhone = this.signInForm.value.phone;
-            alert('Otp sent to your register mobile number');
+            localStorage.setItem(
+              Constants.INITIALSIGNUPDATA,
+              this.signInForm.value.phone
+            );
+            // alert('Otp sent to your register mobile number');
             this._router.navigate([`auth/otp-verify/${this.signUpORSignin}`]);
           }
         },

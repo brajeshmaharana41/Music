@@ -7,7 +7,6 @@ import { HttpHandlerService } from '../shared/services/httphandler.service';
   providedIn: 'root',
 })
 export class AuthService {
-  otpPhone: string;
   constructor(private _http$: HttpHandlerService) {}
 
   otpGeneration(
