@@ -101,6 +101,7 @@ export class SignUpEmailComponent implements OnInit {
   }
 
   onClickSubmit() {
+    console.log(this.signUpForm);
     if (this.signUpForm.valid) {
       if (this.signUpORSignIn === '1') {
         localStorage.setItem(
