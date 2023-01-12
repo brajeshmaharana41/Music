@@ -4,8 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Constants } from 'src/app/shared/common/constant';
 import { CommonService } from 'src/app/shared/services/common.service';
+import { BodyUserDataType } from 'src/app/shared/type/auth-type';
 import { HttResponseType } from 'src/app/shared/type/common-type';
-import { AuthService } from '../auth.service';
+import { MainService } from '../main.service';
+// import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-profile-update',
@@ -14,44 +16,41 @@ import { AuthService } from '../auth.service';
 })
 export class ProfileUpdateComponent implements OnInit {
   ProfileForm: FormGroup;
-  profilePageRoutedFromId: string; // 1 is for international and 2 is for Bangladesh
+  userData: BodyUserDataType;
   constructor(
     private _router: Router,
     private formBuilder: FormBuilder,
-    private _authService$: AuthService,
-    private _commonService$: CommonService
+    private _commonService$: CommonService,
+    private _mainService$: MainService
   ) {
-    this.profilePageRoutedFromId = localStorage.getItem(Constants.USERTYPE);
+    this.userData = JSON.parse(localStorage.getItem(Constants.LOGGEDINUSER));
   }
 
   ngOnInit(): void {
     this.ProfileForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      dateofbirth: ['', Validators.required],
-      gender: ['', Validators.required],
-      phone: [
-        this.profilePageRoutedFromId === '2'
-          ? localStorage.getItem(Constants.INITIALSIGNUPDATA)
-          : '',
-        Validators.required,
-      ],
-      country: [
-        this.profilePageRoutedFromId === '2' ? 'Bangladesh' : '',
-        Validators.required,
-      ],
+      name: [this.userData.name, Validators.required],
+      dateofbirth: [this.userData, Validators.required],
+      gender: [this.userData.gender, Validators.required],
     });
   }
 
   onClickSubmit() {
+    console.log(this.ProfileForm.valid);
     if (this.ProfileForm.valid) {
-      console.log(this.ProfileForm);
-      this._authService$
-        .signUp(this.createFormData(this.ProfileForm.value))
+      this._mainService$
+        .updateProfile(this.createFormData(this.ProfileForm.value))
         .subscribe({
           next: (res: HttResponseType) => {
             if (res && res.status === Constants.SUCCESSSTATUSCODE) {
-              this._commonService$.storeSessionInfo(res);
-              localStorage.removeItem(Constants.INITIALSIGNUPDATA);
+              const obj = {
+                subscription_status: res.body.subscription_status,
+                gender: res.body.gender,
+                name: res.body.name,
+                profile_pic: res.body.profile_pic,
+              };
+              localStorage.setItem(Constants.LOGGEDINUSER, JSON.stringify(obj));
+              this._commonService$.userUpdated.next('');
+              // this._commonService$.storeSessionInfo(res);
               this._router.navigate(['main/home']);
             }
           },
@@ -63,20 +62,12 @@ export class ProfileUpdateComponent implements OnInit {
   }
 
   createFormData(data: any) {
-    const preData = JSON.parse(
-      localStorage.getItem(Constants.INITIALSIGNUPDATA)
-    );
+    console.log(data);
     const form: FormData = new FormData();
     form.append('name', data.name);
-    form.append('country', data.country);
-    form.append('dob', data.dateofbirth);
+    // form.append('country', data.country);
+    // form.append('dob', data.dateofbirth);
     form.append('gender', data.gender);
-    if (this.profilePageRoutedFromId === '1') {
-      form.append('email', preData.email);
-      form.append('password', preData.password);
-    } else {
-      form.append('mobile', preData);
-    }
     return form;
   }
 }

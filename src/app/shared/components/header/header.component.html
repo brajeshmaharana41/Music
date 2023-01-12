@@ -72,7 +72,9 @@
             <mat-icon>keyboard_arrow_down</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>Edit Profile</button>
+            <button mat-menu-item (click)="goToEditProfile()">
+              Edit Profile
+            </button>
           </mat-menu>
         </div>
         <mat-divider vertical style="height: 40px"></mat-divider>
@@ -124,13 +126,18 @@
               <div class="p-1">
                 <span class="head_title">Listining is Everything</span>
               </div>
-              <div class="bord_pros" *ngIf="
-              userInfo?.subscription_status === Constants?.ACTIVESTRING
-              ">
+              <div
+                class="bord_pros"
+                *ngIf="
+                  userInfo?.subscription_status === Constants?.ACTIVESTRING
+                "
+              >
                 <span class="pro_forn">Pro</span>
               </div>
             </div>
-            <div style="position: absolute; padding-top: 25px; padding-left: 3px;">
+            <div
+              style="position: absolute; padding-top: 25px; padding-left: 3px"
+            >
               <span class="head_subtitle">Welcome {{ userInfo?.name }}!</span>
             </div>
           </div>
@@ -156,13 +163,13 @@
           </button>
         </div> -->
         <button
-        mat-icon-button
-        aria-label="Example icon button with a vertical three dot icon"
-        class="btn_icon"
-        (click)="logout()"
-      >
-        <mat-icon>exit_to_app</mat-icon>
-      </button>
+          mat-icon-button
+          aria-label="Example icon button with a vertical three dot icon"
+          class="btn_icon"
+          (click)="logout()"
+        >
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
       </div>
     </div>
   </div>

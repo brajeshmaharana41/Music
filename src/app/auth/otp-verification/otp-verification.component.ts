@@ -37,7 +37,7 @@ export class OtpVerificationComponent implements OnInit {
   onClickSubmit() {
     if (this.otp && this.otp.valid) {
       if (this.signUpORSignin === '1') {
-        this._router.navigate(['auth/profileUpdate']);
+        this._router.navigate(['auth/create-profile']);
       } else {
         this.verifyOTPAPI(
           localStorage.getItem(Constants.INITIALSIGNUPDATA),

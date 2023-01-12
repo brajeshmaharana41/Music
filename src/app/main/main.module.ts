@@ -21,16 +21,21 @@ import { SidebarComponent } from '../shared/components/sidebar/sidebar.component
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SingersComponent } from '../shared/components/singers/singers.component';
 import { PlaylistContentComponent } from '../shared/components/playlist-content/playlist-content.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { ViewDataComponent } from '../shared/components/view-data/view-data.component';
-import {MatTreeModule} from '@angular/material/tree';
+import { MatTreeModule } from '@angular/material/tree';
 import { SingerListComponent } from '../shared/components/singer-list/singer-list.component';
+import { ProfileUpdateComponent } from './profile-update/profile-update.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { AuthRoutingModule } from '../auth/auth-routing.module';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,8 @@ import { SingerListComponent } from '../shared/components/singer-list/singer-lis
     PlaylistContentComponent,
     FooterComponent,
     ViewDataComponent,
-    SingerListComponent
+    SingerListComponent,
+    ProfileUpdateComponent,
   ],
   imports: [
     CommonModule,
@@ -64,7 +70,22 @@ import { SingerListComponent } from '../shared/components/singer-list/singer-lis
     MatInputModule,
     SharedModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatTreeModule,
+
+    CommonModule,
+    AuthRoutingModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

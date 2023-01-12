@@ -108,7 +108,7 @@ export class SignUpEmailComponent implements OnInit {
           Constants.INITIALSIGNUPDATA,
           JSON.stringify(this.signUpForm.value)
         );
-        this._router$.navigate(['auth/profileUpdate']);
+        this._router$.navigate(['auth/create-profile']);
       } else {
         let body = {
           email: this.signUpForm.value.email,

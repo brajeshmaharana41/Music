@@ -4,6 +4,7 @@ import { SingerListComponent } from '../shared/components/singer-list/singer-lis
 import { ViewDataComponent } from '../shared/components/view-data/view-data.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
+import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: 'home', component: DashboardComponent },
       { path: 'viewData', component: ViewDataComponent },
       { path: 'singerlist/:listType', component: SingerListComponent },
+      { path: 'profile-update', component: ProfileUpdateComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
