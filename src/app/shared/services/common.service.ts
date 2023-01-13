@@ -80,7 +80,6 @@ export class CommonService {
   }
 
   goToViewSongList(songList: Type.SongType[], title: string) {
-    console.log('siong');
     // this.viewDataCompSongList = songList;
     // localStorage.setItem(Constants.VIEWDATASONGLIST, JSON.stringify(songList));
     // this.listTitle = title;

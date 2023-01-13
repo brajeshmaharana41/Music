@@ -73,7 +73,9 @@ export class ProfileCreationComponent implements OnInit {
     form.append('country', data.country);
     form.append('dob', data.dateofbirth);
     form.append('gender', data.gender);
-    form.append('file', this.rawImage);
+    if (this.rawImage) {
+      form.append('file', this.rawImage);
+    }
     if (this.profilePageRoutedFromId === '1') {
       form.append('email', preData.email);
       form.append('password', preData.password);
