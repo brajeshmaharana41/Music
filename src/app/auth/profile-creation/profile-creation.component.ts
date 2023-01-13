@@ -6,6 +6,7 @@ import { Constants } from 'src/app/shared/common/constant';
 import { CommonService } from 'src/app/shared/services/common.service';
 import { HttResponseType } from 'src/app/shared/type/common-type';
 import { AuthService } from '../auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-profile-creation',
@@ -71,7 +72,7 @@ export class ProfileCreationComponent implements OnInit {
     const form: FormData = new FormData();
     form.append('name', data.name);
     form.append('country', data.country);
-    form.append('dob', data.dateofbirth);
+    form.append('dob', moment(data.dateofbirth).format('YYYY-MM-DD'));
     form.append('gender', data.gender);
     if (this.rawImage) {
       form.append('file', this.rawImage);

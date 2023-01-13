@@ -7,6 +7,7 @@ import { CommonService } from 'src/app/shared/services/common.service';
 import { BodyUserDataType } from 'src/app/shared/type/auth-type';
 import { HttResponseType } from 'src/app/shared/type/common-type';
 import { MainService } from '../main.service';
+import * as moment from 'moment';
 // import { AuthService } from '../auth.service';
 
 @Component({
@@ -34,9 +35,13 @@ export class ProfileUpdateComponent implements OnInit {
   }
 
   initializeForm() {
+    console.log(moment('1988-10-02').format('MM/DD/YYYY'));
     this.ProfileForm = this.formBuilder.group({
       name: [this.userData.name, Validators.required],
-      dateofbirth: [this.userData.dob, Validators.required],
+      dateofbirth: [
+        new Date(moment(this.userData.dob).format('MM/DD/YYYY')),
+        Validators.required,
+      ],
       gender: [this.userData.gender, Validators.required],
     });
   }
@@ -57,7 +62,8 @@ export class ProfileUpdateComponent implements OnInit {
   }
 
   onClickSubmit() {
-    console.log(this.ProfileForm.valid);
+    // console.log(this.ProfileForm);
+    // console.log(moment(this.ProfileForm.value.dateofbirth));
     if (this.ProfileForm.valid) {
       this._mainService$
         .updateProfile(this.createFormData(this.ProfileForm.value))
@@ -88,7 +94,7 @@ export class ProfileUpdateComponent implements OnInit {
     const form: FormData = new FormData();
     form.append('name', data.name);
     // form.append('country', data.country);
-    form.append('dob', data.dateofbirth);
+    form.append('dob', moment(data.dateofbirth).format('YYYY-MM-DD'));
     if (this.rawImage) {
       form.append('file', this.rawImage);
     }
