@@ -11,6 +11,7 @@ import * as CommonType from '../../shared/type/common-type';
 import { Constants } from '../../shared/common/constant';
 import { AuthService } from '../auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _mainService$: MainService,
     private _authService$: AuthService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private _location: Location
   ) {
     this.signUpORSignin = this.activatedRoute.snapshot.params['id'];
   }
@@ -56,5 +58,9 @@ export class LoginComponent implements OnInit {
         },
       });
     }
+  }
+
+  cancel() {
+    this._location.back();
   }
 }

@@ -18,22 +18,41 @@ export class ProfileUpdateComponent implements OnInit {
   dataimage: File | string;
   rawImage: File;
   ProfileForm: FormGroup;
-  userData: BodyUserDataType;
+  userData: any;
   constructor(
     private _router: Router,
     private formBuilder: FormBuilder,
     private _commonService$: CommonService,
     private _mainService$: MainService
   ) {
-    this.userData = JSON.parse(localStorage.getItem(Constants.LOGGEDINUSER));
-    this.dataimage = this.userData.profile_pic;
+    // this.userData = JSON.parse(localStorage.getItem(Constants.LOGGEDINUSER));
+    // this.dataimage = this.userData.profile_pic;
   }
 
   ngOnInit(): void {
+    this.getUserdetails();
+  }
+
+  initializeForm() {
     this.ProfileForm = this.formBuilder.group({
       name: [this.userData.name, Validators.required],
-      dateofbirth: [this.userData, Validators.required],
+      dateofbirth: [this.userData.dob, Validators.required],
       gender: [this.userData.gender, Validators.required],
+    });
+  }
+
+  getUserdetails() {
+    this._mainService$.userDetails().subscribe({
+      next: (res: HttResponseType) => {
+        if (res && res.status === Constants.SUCCESSSTATUSCODE) {
+          this.userData = res.body;
+          this.dataimage = this.userData.profile_pic;
+          this.initializeForm();
+        }
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err.error);
+      },
     });
   }
 
@@ -69,8 +88,10 @@ export class ProfileUpdateComponent implements OnInit {
     const form: FormData = new FormData();
     form.append('name', data.name);
     // form.append('country', data.country);
-    // form.append('dob', data.dateofbirth);
-    form.append('file', this.rawImage);
+    form.append('dob', data.dateofbirth);
+    if (this.rawImage) {
+      form.append('file', this.rawImage);
+    }
     form.append('gender', data.gender);
     return form;
   }

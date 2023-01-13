@@ -8,22 +8,37 @@
       fxFlex.xl="100"
       class="background"
     >
-    <form
+      <form
         class="exp-form"
         [formGroup]="ProfileForm"
+        *ngIf="ProfileForm"
         (ngSubmit)="onClickSubmit()"
       >
-      <div fxLayout="column" fxLayoutAlign="center center" class="pt-4">
-        <div class="file-input-wrapper">
-          <input type="file" class="rev-uplode" multiple="multiple"
-          id="avatar" name="avatar" (change)="uploadFileEvt($event)"
-          accept="image/*">
-        </div>
-          <div class="account-icon-wid">
-              <img [src]="dataimage ? dataimage : 'https://cdn.iconscout.com/icon/free/png-256/add-person-1780869-1514184.png'" width="100px" height="100px"> 
+        <div fxLayout="column" fxLayoutAlign="center center" class="pt-4">
+          <div class="file-input-wrapper">
+            <input
+              type="file"
+              class="rev-uplode"
+              multiple="multiple"
+              id="avatar"
+              name="avatar"
+              (change)="uploadFileEvt($event)"
+              accept="image/*"
+            />
           </div>
-      </div>
-      
+          <div class="account-icon-wid">
+            <img
+              [src]="
+                dataimage
+                  ? dataimage
+                  : 'https://cdn.iconscout.com/icon/free/png-256/add-person-1780869-1514184.png'
+              "
+              width="100px"
+              height="100px"
+            />
+          </div>
+        </div>
+
         <div fxLayout="column" fxLayoutAlign="center center" class="pt-5">
           <mat-form-field class="example-form" appearance="outline">
             <input

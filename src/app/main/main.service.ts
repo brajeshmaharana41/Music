@@ -22,4 +22,12 @@ export class MainService {
       )}`,
     });
   }
+
+  userDetails() {
+    return this._httpClient$.get(API.User.userDetails, {
+      Authorization: `Bearer ${localStorage.getItem(
+        Constants.SESSIONTOKENSTRING
+      )}`,
+    });
+  }
 }

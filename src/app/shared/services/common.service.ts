@@ -63,6 +63,7 @@ export class CommonService {
   }
 
   getSongsToViewPage(paramObj: CommonType.SearchSongParamType, title: string) {
+    localStorage.removeItem('viewDataNew'); // temp
     localStorage.setItem(Constants.VIEWPAGEPARAM, JSON.stringify(paramObj));
     localStorage.setItem(Constants.LISTTITLE, title);
     this.viewPageDataChange.next({ paramObj, title });
@@ -79,11 +80,16 @@ export class CommonService {
   }
 
   goToViewSongList(songList: Type.SongType[], title: string) {
+    console.log('siong');
     // this.viewDataCompSongList = songList;
     // localStorage.setItem(Constants.VIEWDATASONGLIST, JSON.stringify(songList));
     // this.listTitle = title;
     // localStorage.setItem(Constants.LISTTITLE, title);
     // this._router$.navigate(['main/viewData']);
+    localStorage.setItem(Constants.LISTTITLE, title); // temp
+    localStorage.setItem('viewDataNew', JSON.stringify(songList)); //temp
+    this.viewPageDataChange.next({ paramObj: songList, title }); // temp
+    this._router$.navigate(['main/viewData']); //temp
   }
 
   // goToSingerListPage(personList: Type.TopPickSubType[]) {

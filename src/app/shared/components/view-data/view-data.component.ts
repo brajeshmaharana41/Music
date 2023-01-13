@@ -25,18 +25,41 @@ export class ViewDataComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.paramObj = JSON.parse(localStorage.getItem(Constants.VIEWPAGEPARAM));
-    this.listTitle = localStorage.getItem(Constants.LISTTITLE);
-    this.getViewPageData(this.paramObj);
+    // if (this.viewDataCompSongList) {
+    //   console.log('here');
+    //   //temp
+    //   return; //temp
+    // } //temp
+    if (!localStorage.getItem('viewDataNew')) {
+      // temp
+      this.paramObj = JSON.parse(localStorage.getItem(Constants.VIEWPAGEPARAM));
+      this.listTitle = localStorage.getItem(Constants.LISTTITLE);
+      this.getViewPageData(this.paramObj);
+    } // temp
+    else {
+      this.viewDataCompSongList = JSON.parse(
+        // temp
+        localStorage.getItem('viewDataNew') // temp
+      ); // temp
+      this.listTitle = localStorage.getItem(Constants.LISTTITLE); //temp
+    }
     this._commonService$.viewPageDataChange.subscribe({
       next: (res: {
-        paramObj: CommonType.SearchSongParamType;
+        paramObj: CommonType.SearchSongParamType | any;
         title: string;
       }) => {
         console.log(res);
-        this.paramObj = res.paramObj;
-        this.listTitle = res.title;
-        this.getViewPageData(this.paramObj);
+        if (!localStorage.getItem('viewDataNew')) {
+          // temp
+          this.paramObj = res.paramObj;
+          this.listTitle = res.title;
+          this.getViewPageData(this.paramObj);
+        } //temp
+        else {
+          // temp
+          this.viewDataCompSongList = res.paramObj; //temp
+          this.listTitle = res.title; // temp
+        } //temp
       },
     });
   }

@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgOtpInputConfig } from 'ng-otp-input';
 import { CommonService } from 'src/app/shared/services/common.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-otp-verification',
@@ -26,7 +27,8 @@ export class OtpVerificationComponent implements OnInit {
     private _mainService$: MainService,
     private _authService$: AuthService,
     private _commonService$: CommonService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private _location: Location
   ) {
     this.signUpORSignin = this.activatedRoute.snapshot.params['id'];
   }
@@ -76,4 +78,8 @@ export class OtpVerificationComponent implements OnInit {
     inputClass: 'each_input',
     containerClass: 'all_inputs',
   };
+
+  cancel() {
+    this._location.back();
+  }
 }

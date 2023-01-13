@@ -380,14 +380,25 @@
       <span class="title"> Newly Added </span>
     </div>
     <div>
-      <a class="view_title"> View all </a>
+      <a
+        class="view_title"
+        (click)="
+          _commonService$.goToViewSongList(
+            dashboardData?.newAdded,
+            'NewlyAdded'
+          )
+        "
+      >
+        View all
+      </a>
     </div>
   </div>
   <div fxLayout="row" class="scroll">
     <div
       class="arts_padding"
       fxLayoutAlign="center center"
-      *ngFor="let playsitsong of dashboardData?.newAdded"
+      (click)="_commonService$.createPlayList(dashboardData?.newAdded, i)"
+      *ngFor="let playsitsong of dashboardData?.newAdded; let i = index"
     >
       <app-playlist-content [playlistdata]="playsitsong"></app-playlist-content>
     </div>
