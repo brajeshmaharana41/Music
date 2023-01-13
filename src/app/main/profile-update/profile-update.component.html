@@ -62,6 +62,7 @@
             <mat-datepicker-toggle
               matIconSuffix
               [for]="picker"
+              style="height: 1em; margin-top: -2.2em"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error *ngIf="ProfileForm.controls['dateofbirth'].invalid"
