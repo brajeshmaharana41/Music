@@ -35,6 +35,7 @@ export class SidebarService {
     'Categories',
     'Top Picks',
     'Podcast',
+    'Newly Added',
   ];
   dashBoardData: any;
   constructor(
@@ -75,6 +76,13 @@ export class SidebarService {
         this._commonService$.goToViewSongList(
           this.dashBoardData.podcast,
           'Podcast'
+        );
+        return null;
+
+      case 'Newly Added':
+        this._commonService$.goToViewSongList(
+          this.dashBoardData.newAdded,
+          'Newly Added'
         );
         return null;
       default:
