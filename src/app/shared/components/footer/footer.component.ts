@@ -12,7 +12,9 @@ export class FooterComponent implements OnInit {
   constructor(private _router: Router) {}
 
   ngOnInit(): void {}
-
+  goToHomePage(){
+    this._router.navigate(['main/home'])
+  }
   goToSearchPage() {
     this._router.navigate(['main/searchData']);
   }
