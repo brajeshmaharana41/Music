@@ -2,21 +2,21 @@
   <div fxLayout="row" class="btn_outer">
     <div>
       <button mat-icon-button class="btn_icon">
-        <mat-icon>home</mat-icon><br>
+        <mat-icon>home</mat-icon><br />
         <span class="btn_title">Home</span>
       </button>
     </div>
-   
+
     <div>
-      <button mat-icon-button class="btn_icon">
-        <mat-icon>search</mat-icon><br>
+      <button (click)="goToSearchPage()" mat-icon-button class="btn_icon">
+        <mat-icon>search</mat-icon><br />
         <span class="btn_title">Search</span>
       </button>
     </div>
 
     <div>
       <button mat-icon-button class="btn_icon">
-        <mat-icon>library_music</mat-icon><br>
+        <mat-icon>library_music</mat-icon><br />
         <span class="btn_title">Library</span>
       </button>
     </div>
@@ -30,7 +30,7 @@
 
     <div>
       <button mat-icon-button class="btn_icon">
-        <mat-icon>account_circle</mat-icon><br>
+        <mat-icon>account_circle</mat-icon><br />
         <span class="btn_title">Profile</span>
       </button>
     </div>

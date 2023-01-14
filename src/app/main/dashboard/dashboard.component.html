@@ -9,6 +9,7 @@
           placeholder="Search for new music, news, artists..."
           [matAutocomplete]="auto"
           class="input_search"
+          name="search_input"
           [(ngModel)]="searchString"
           (keydown.enter)="search()"
         />
