@@ -10,7 +10,7 @@ import { AudioPlayerComponent } from './components/audio-player/audio-player.com
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 
 @NgModule({
-  declarations: [AudioPlayerComponent],
+  declarations: [AudioPlayerComponent ],
   imports: [
     CommonModule,
     //MaterialModule,
