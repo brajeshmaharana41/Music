@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
   selectedTopPick: Array<Type.TopPickSubType>;
   selectedToPickID: number;
   selectedTrending: Type.TrendingType;
+  searchString: string;
   constructor(
     private _mainService$: MainService,
     public _commonService$: CommonService,
@@ -50,6 +51,15 @@ export class DashboardComponent implements OnInit {
     );
 
     this.getDashboardItem();
+  }
+
+  search() {
+    console.log(this.searchString);
+    if (this.searchString) {
+      this._router$.navigate(['main/searchData'], {
+        queryParams: { term: this.searchString },
+      });
+    }
   }
 
   getDashboardItem() {

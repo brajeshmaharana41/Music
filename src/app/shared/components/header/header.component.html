@@ -60,7 +60,15 @@
           </div>
         </div>
         <div class="profile_pic">
-          <img src="{{ userInfo?.profile_pic }}" alt="" class="img_profile" />
+          <img
+            src="{{
+              userInfo?.profile_pic
+                ? userInfo?.profile_pic
+                : 'assets/Google.png'
+            }}"
+            alt=""
+            class="img_profile"
+          />
         </div>
         <div>
           <button

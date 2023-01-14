@@ -9,9 +9,13 @@
           placeholder="Search for new music, news, artists..."
           [matAutocomplete]="auto"
           class="input_search"
+          [(ngModel)]="searchString"
+          (keydown.enter)="search()"
         />
         <button mat-icon-button aria-label="" matPrefix class="ml-2">
-          <mat-icon class="input-icon">search</mat-icon>
+          <mat-icon class="input-icon" (click)="search()"
+            >search {{ searchString }}</mat-icon
+          >
         </button>
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
           <mat-option
@@ -383,10 +387,7 @@
       <a
         class="view_title"
         (click)="
-          _commonService$.goToViewSongList(
-            dashboardData?.newAdded,
-            'New'
-          )
+          _commonService$.goToViewSongList(dashboardData?.newAdded, 'New')
         "
       >
         View all
