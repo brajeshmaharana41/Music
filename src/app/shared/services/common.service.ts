@@ -91,6 +91,8 @@ export class CommonService {
     this._router$.navigate(['main/viewData']); //temp
   }
 
+  searchAPI() {}
+
   // goToSingerListPage(personList: Type.TopPickSubType[]) {
   //   this.personList = personList;
   //   localStorage.setItem(Constants.PERSONLIST, JSON.stringify(personList));

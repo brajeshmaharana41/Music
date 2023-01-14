@@ -52,6 +52,13 @@ export class DashboardComponent implements OnInit {
     this.getDashboardItem();
   }
 
+  search(term: string) {
+    console.log(term);
+    // if(term){
+    //  this._router$.navigate([],{queryParams:{term}})
+    // }
+  }
+
   getDashboardItem() {
     this._mainService$.getDashboard().subscribe({
       next: (res) => {
