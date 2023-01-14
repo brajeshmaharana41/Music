@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { map, Observable, startWith } from 'rxjs';
+import { CommonService } from '../../services/common.service';
+import * as CommonType from '../../type/common-type';
+import { SongType } from '../../type/main.type';
 export interface User {
   name: string;
 }
@@ -8,17 +12,22 @@ export interface User {
 @Component({
   selector: 'app-search-data',
   templateUrl: './search-data.component.html',
-  styleUrls: ['./search-data.component.scss']
+  styleUrls: ['./search-data.component.scss'],
 })
 export class SearchDataComponent implements OnInit {
   myControl = new FormControl<string | User>('');
   filteredOptions: Observable<User[]>;
+  songList: SongType[];
+  currentSearchString: string = 'hgtjkg';
   options: User[] = [
     { name: 'Play List For You' },
     { name: 'Categories' },
     { name: 'Podcast' },
   ];
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    public _commonService: CommonService
+  ) {}
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -28,6 +37,26 @@ export class SearchDataComponent implements OnInit {
         return name ? this._filter(name as string) : this.options.slice();
       })
     );
+
+    this.route.queryParams.subscribe((params: any) => {
+      // console.log(params); // { order: "popular" }
+      this.currentSearchString = params.term;
+      console.log(this.currentSearchString);
+      this.getSongsForSearch(params);
+      // this.order = params.order;
+    });
+  }
+
+  search() {
+    this.getSongsForSearch({ term: this.currentSearchString });
+  }
+
+  getSongsForSearch(paramObj: CommonType.SearchSongParamType) {
+    this._commonService.getSongs(paramObj).subscribe({
+      next: (res: CommonType.HttResponseType) => {
+        this.songList = [...res.body];
+      },
+    });
   }
   displayFn(user: User): string {
     return user && user.name ? user.name : '';
