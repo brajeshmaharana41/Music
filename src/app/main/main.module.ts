@@ -36,6 +36,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AuthRoutingModule } from '../auth/auth-routing.module';
 import { MatSelectModule } from '@angular/material/select';
+import { SearchDataComponent } from '../shared/components/search-data/search-data.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MatSelectModule } from '@angular/material/select';
     PlaylistContentComponent,
     FooterComponent,
     ViewDataComponent,
+    SearchDataComponent,
     SingerListComponent,
     ProfileUpdateComponent,
   ],

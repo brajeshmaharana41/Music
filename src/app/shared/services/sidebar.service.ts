@@ -34,8 +34,8 @@ export class SidebarService {
     'Play List For You',
     'Categories',
     'Top Picks',
+    'New',
     'Podcast',
-    'Newly Added',
   ];
   dashBoardData: any;
   constructor(
@@ -79,10 +79,10 @@ export class SidebarService {
         );
         return null;
 
-      case 'Newly Added':
+      case 'New':
         this._commonService$.goToViewSongList(
           this.dashBoardData.newAdded,
-          'Newly Added'
+          'New'
         );
         return null;
       default:

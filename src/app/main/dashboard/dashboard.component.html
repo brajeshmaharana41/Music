@@ -377,7 +377,7 @@
 <div *ngIf="dashboardData?.newAdded.length > 0" class="pt-3">
   <div fxLayout="row" fxLayoutAlign="space-between center" class="p-3">
     <div>
-      <span class="title"> Newly Added </span>
+      <span class="title"> New </span>
     </div>
     <div>
       <a
@@ -385,7 +385,7 @@
         (click)="
           _commonService$.goToViewSongList(
             dashboardData?.newAdded,
-            'NewlyAdded'
+            'New'
           )
         "
       >
