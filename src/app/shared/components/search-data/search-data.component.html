@@ -3,7 +3,6 @@
   <div fxLayout="row" fxLayoutAlign="center center">
     <form class="example-form">
       <mat-form-field class="example-full-width" appearance="outline">
-<<<<<<< HEAD
         <input
           type="text"
           matInput
@@ -14,17 +13,16 @@
           #searchInput
           (keydown.enter)="search(searchInput.value)"
         />
-=======
-        <input type="text" matInput [formControl]="myControl" placeholder="Search for new music, news, artists..."
-          [matAutocomplete]="auto" class="input_search" [(ngModel)]="currentSearchString" (keydown.enter)="search()" />
->>>>>>> 3f07cfeffbfd21ac32f29a0ab71ab134d0942731
         <button mat-icon-button aria-label="" matPrefix class="ml-2">
           <mat-icon class="input-icon" (click)="search(searchInput.value)"
             >search</mat-icon
           >
         </button>
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
             {{ option.name }}
           </mat-option>
         </mat-autocomplete>
@@ -39,14 +37,27 @@
     </div>
   </div>
   <div fxLayout="row wrap">
-    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="p-2" *ngFor="let song of songList; let i = index">
+    <div
+      fxFlex.xs="100"
+      fxFlex.sm="100"
+      fxFlex.md="50"
+      fxFlex.lg="50"
+      fxFlex.xl="50"
+      class="p-2"
+      *ngFor="let song of songList; let i = index"
+    >
       <!-- *ngFor="let song of viewDataCompSongList; let i = index" -->
-      <div  class="allsong_bord">
+      <div class="allsong_bord">
         <div class="img_song">
           <img src="{{ song?.thumb_img }}" width="60" alt="" />
         </div>
-        <div class="dec_song" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="gappx"
-          (click)="_commonService.createPlayList(songList, i)">
+        <div
+          class="dec_song"
+          fxLayout="column"
+          fxLayoutAlign="space-around start"
+          fxLayoutGap="gappx"
+          (click)="_commonService.createPlayList(songList, i)"
+        >
           <!-- (click)="_commonService$.createPlayList(viewDataCompSongList, i)" -->
 
           <div class="pb-1">
@@ -57,7 +68,11 @@
           </div>
         </div>
         <div class="more_song">
-          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
