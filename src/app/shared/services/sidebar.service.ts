@@ -36,6 +36,7 @@ export class SidebarService {
     'Top Picks',
     'New',
     'Podcast',
+    'About Dhaka Record'
   ];
   dashBoardData: any;
   constructor(
