@@ -58,13 +58,16 @@ export class SidebarComponent implements OnInit {
   goToComp(node: DynamicFlatNode) {
     switch (node.item) {
       case 'About Dhaka Record':
-        this._router$.navigate(['about/about-us']);
+        // this._router$.navigate(['about/about-us']);
+                this._router$.navigate(['main/about-us']);
         break;
       case 'Terms & Condition':
-        this._router$.navigate(['about/terms']);
+        // this._router$.navigate(['about/terms']);
+        this._router$.navigate(['main/terms']);
         break;
       case 'Privacy Policy':
-        this._router$.navigate(['about/privacy']);
+        // this._router$.navigate(['about/privacy']);
+                this._router$.navigate(['main/privacy']);
         break;
     }
   }
