@@ -21,14 +21,25 @@ import { SidebarComponent } from '../shared/components/sidebar/sidebar.component
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SingersComponent } from '../shared/components/singers/singers.component';
 import { PlaylistContentComponent } from '../shared/components/playlist-content/playlist-content.component';
-import { BandPlayListComponent } from '../shared/components/band-play-list/band-play-list.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { ViewDataComponent } from '../shared/components/view-data/view-data.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { SingerListComponent } from '../shared/components/singer-list/singer-list.component';
+import { ProfileUpdateComponent } from './profile-update/profile-update.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { AuthRoutingModule } from '../auth/auth-routing.module';
+import { MatSelectModule } from '@angular/material/select';
+import { SearchDataComponent } from '../shared/components/search-data/search-data.component';
+import { AboutUsComponent } from '../about/about-us/about-us.component';
+import { TermsAndConditionComponent } from '../about/terms-and-condition/terms-and-condition.component';
+import { PrivacyAndPolicyComponent } from '../about/privacy-and-policy/privacy-and-policy.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +49,14 @@ import {MatMenuModule} from '@angular/material/menu';
     SidebarComponent,
     SingersComponent,
     PlaylistContentComponent,
-    BandPlayListComponent,
     FooterComponent,
+    ViewDataComponent,
+    SearchDataComponent,
+    SingerListComponent,
+    ProfileUpdateComponent,
+    AboutUsComponent, 
+    TermsAndConditionComponent, 
+    PrivacyAndPolicyComponent
   ],
   imports: [
     CommonModule,
@@ -61,6 +78,22 @@ import {MatMenuModule} from '@angular/material/menu';
     MatInputModule,
     SharedModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTreeModule,
+
+    CommonModule,
+    AuthRoutingModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -1,4 +1,20 @@
 export enum Constants {
-    ACCESSTOKEN = 'token',
-    LIMIT=10
+  ACCESSTOKEN = 'token',
+  SKIP = 0,
+  LIMIT = 10,
+  SUCCESSSTATUSCODE = 200,
+  SESSIONTOKENSTRING = 'token',
+  LOGGEDINUSER = 'user',
+  LOGGEDINUSERID = 'userid',
+  ACTIVESTRING = 'active',
+  PLAYLIST = 'playlist',
+  VIEWDATASONGLIST = 'viewdatasonglist',
+  LISTTITLE = 'listtitle',
+  PERSONLIST = 'personlist',
+  ARTIST = 'ARTIST',
+  ACTOR = 'ACTOR',
+  VIEWPAGEPARAM = 'viewpageparam',
+  INITIALSIGNUPDATA = 'signupdata',
+  USERTYPE = 'usertype',
+  PHONE = 'phone',
 }

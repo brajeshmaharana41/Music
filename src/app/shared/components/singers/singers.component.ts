@@ -1,9 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-// export interface SingerList {
-//   image: string;
-//   names: string;
-// }
 @Component({
   selector: 'app-singers',
   templateUrl: './singers.component.html',

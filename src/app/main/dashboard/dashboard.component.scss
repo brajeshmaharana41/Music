@@ -49,23 +49,23 @@ display: none;
   color: #0D2238;
 }
 .btn_chip:hover{
-border: 1px solid #fb8aff;
+border: 1px solid #FF0000;
 border-radius: 20px;
-background: #fb8aff;
+background: #FF0000;
 font-family: 'Inter';
 font-weight: 600;
 font-size: 16px;
-color: #0D2238;
+color: white;
 }
 
 .btn_chip_active{
-border: 1px solid #fb8aff;
+border: 1px solid #FF0000;
 border-radius: 20px;
-background: #fb8aff;
+background: #FF0000;
 font-family: 'Inter';
 font-weight: 600;
 font-size: 16px;
-color: #0D2238;
+color:white;
 }
 .example-form {
     min-width: 150px;
@@ -98,6 +98,7 @@ color: #0D2238;
     font-size: 14px;
     color: #86909B;
     text-decoration: none;
+    cursor: pointer;
   }
   .song_card{
     // display: flex;
@@ -203,4 +204,7 @@ color: #0D2238;
   }
   .pointer{
     cursor: pointer;
+  }
+  .mrgen_bton{
+    margin-bottom: 100px;
   }

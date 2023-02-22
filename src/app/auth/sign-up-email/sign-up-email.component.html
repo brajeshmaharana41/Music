@@ -1,0 +1,118 @@
+<div>
+  <div fxLayout="row wrap">
+    <div
+      fxHide
+      fxShow.gt-sm
+      fxFlex.xs="100"
+      fxFlex.sm="100"
+      fxFlex.md="50"
+      fxFlex.lg="40"
+      fxFlex.xl="40"
+      class="background"
+    >
+      <img src="assets/splaceImage.png" alt="" class="splaceSize" />
+    </div>
+    <div
+      fxFlex.xs="100"
+      fxFlex.sm="100"
+      fxFlex.md="50"
+      fxFlex.lg="60"
+      fxFlex.xl="60"
+      class="background"
+    >
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+        <div>
+          <img src="assets/Dhaka Record Logo_F 2.png" alt="" />
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+        <div class="splace_dec">
+          <span class="head_title">Hello! Register to get started</span>
+        </div>
+      </div>
+      <form
+        class="exp-form"
+        [formGroup]="signUpForm"
+        (ngSubmit)="onClickSubmit()"
+      >
+        <div fxLayout="column" fxLayoutAlign="center center" class="pt-2">
+          <mat-form-field class="example-form" appearance="outline">
+            <input
+              type="email"
+              matInput
+              placeholder="Enter Email"
+              formControlName="email"
+            />
+            <mat-error *ngIf="signUpForm.controls['email'].invalid">
+              Invalid email</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field class="example-form" appearance="outline">
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              placeholder="Password"
+              maxlength="20"
+              formControlName="password"
+            />
+            <mat-error *ngIf="signUpForm.controls['password'].invalid">
+              Invalid password</mat-error
+            >
+            <div
+              style="cursor: pointer"
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon style="color: #6a707c; font-size: 17px">{{
+                hide ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field
+            *ngIf="signUpORSignIn === '1'"
+            class="example-form"
+            appearance="outline"
+          >
+            <input
+              matInput
+              [type]="chide ? 'password' : 'text'"
+              placeholder="Confirm Password"
+              maxlength="20"
+              formControlName="confirmpassword"
+              [errorStateMatcher]="confirmErrorMatcher"
+            />
+            <mat-error>{{ getErrorMessage("confirmpassword") }}</mat-error>
+            <div
+              style="cursor: pointer"
+              mat-icon-button
+              matSuffix
+              (click)="chide = !chide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="chide"
+            >
+              <mat-icon style="color: #6a707c; font-size: 17px">{{
+                chide ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </div>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="pt-3">
+          <button mat-button class="splace_btn" type="submit">Continue</button>
+        </div>
+      </form>
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+        <div class="splace_enddec">
+          <span class="head_enddes"
+            >By continuing you are indicating that you agree to the Terms and
+            Privacy Policy.</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

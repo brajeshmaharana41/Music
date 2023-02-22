@@ -1,0 +1,90 @@
+.title{
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 18px;  
+    color: #0D2238;
+  }
+  .view_title{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+    color: #86909B;
+    text-decoration: none;
+  }
+  .res_found{
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 24px;
+    color: #0D2238;
+  }
+  .allsong_bord{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    .img_song{
+      width: 80px;
+      height: 53px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .dec_song{
+      width: 100%;
+      height: 53px;
+      margin-bottom: 5px;
+      padding-left: 10px;
+      .song_title{
+        font-weight: 600;
+        font-size: 12px; 
+        font-family: 'Inter';
+        color: #0D2238;
+      }
+      .song_dec{
+        font-weight: 400;
+        font-size: 12px; 
+        font-family: 'Inter';
+        color: #86909B;   
+      }
+    }
+    .more_song{
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .mrgen_bton{
+    margin-bottom: 100px;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 800px;
+    width: 100%;
+    // background-color: #FFFFFF;
+    border-radius: 20px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+    margin-top: 15px;
+  }
+  .input_search{
+    padding-bottom: 2px;
+    color: #C4C4C4;
+  }
+  .input-icon{
+    color: #C4C4C4;
+  }
+  ::ng-deep .mat-form-field-outline-start {
+    border-radius: 30px 0 0 30px !important;
+    min-width: 30px !important;
+    background-color: #FFFFFF;
+  }
+  ::ng-deep .mat-form-field-outline-end {
+    border-radius: 0 30px 30px 0 !important;
+    min-width: 30px !important;
+    background-color: #FFFFFF;
+  }

@@ -1,9 +1,9 @@
 .card_header {
-    position: sticky;
+    position: fixed;
     z-index: 1;
     bottom: 0rem;
-    height: 50px;
-    width: 100%;
+    height: 100px;
+    width: 82%;
     padding-bottom: 20px;
   }
   .bord_songimg{
@@ -14,11 +14,10 @@
   }
   @media screen and (max-width: 959px) {
     .card_header {
-        position: sticky;
+        position: fixed;
         z-index: 1;
-        bottom: 4rem;
-        height: 45px;
+        bottom: 3rem;
+        height: 114px;
         width: 100%;
-        padding-bottom: 40px;
       }
   }
