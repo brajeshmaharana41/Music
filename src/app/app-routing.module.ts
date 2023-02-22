@@ -22,6 +22,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'about',
+    canActivate: [AuthTokenGuard],
+    loadChildren: () =>
+      import('./about/about.module').then((m) => m.AboutModule),
+  },
+  {
     path: 'main',
     canActivate: [AuthTokenGuard],
     loadChildren: () => import('./main/main.module').then((m) => m.MainModule),

@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/main/main.service';
 import * as Type from '../type/main.type';
@@ -36,14 +36,17 @@ export class SidebarService {
     'Top Picks',
     'New',
     'Podcast',
-    'About Dhaka Record'
+    'About Dhaka Record',
   ];
+  cmsData: any;
   dashBoardData: any;
   constructor(
     public _mainService$: MainService,
     public _commonService$: CommonService,
     public _router$: Router
-  ) {}
+  ) {
+    this.getCMS();
+  }
   /** Initial data from database */
   initialData(): DynamicFlatNode[] {
     this._mainService$.getDashboard().subscribe({
@@ -59,7 +62,16 @@ export class SidebarService {
     );
   }
 
+  getCMS() {
+    this._mainService$.getCMS().subscribe({
+      next: (res) => {
+        this.cmsData = res.body;
+      },
+    });
+  }
+
   getChildren(node: DynamicFlatNode): any[] | undefined {
+    console.log(node);
     switch (node.item) {
       case 'Play List For You':
         return this.dashBoardData.playListForYou;
@@ -86,6 +98,9 @@ export class SidebarService {
           'New'
         );
         return null;
+      case 'About Dhaka Record':
+        this.getCMS();
+        return this.cmsData;
       default:
         return undefined;
     }

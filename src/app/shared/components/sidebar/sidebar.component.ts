@@ -51,7 +51,22 @@ export class SidebarComponent implements OnInit {
   }
 
   selectNode(node: DynamicFlatNode) {
+    this.goToComp(node);
     this.selectedNode = node;
+  }
+
+  goToComp(node: DynamicFlatNode) {
+    switch (node.item) {
+      case 'About Dhaka Record':
+        this._router$.navigate(['about/about-us']);
+        break;
+      case 'Terms & Condition':
+        this._router$.navigate(['about/terms']);
+        break;
+      case 'Privacy Policy':
+        this._router$.navigate(['about/privacy']);
+        break;
+    }
   }
 
   treeControl: FlatTreeControl<DynamicFlatNode>;

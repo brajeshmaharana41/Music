@@ -24,9 +24,9 @@ export class API {
   public static Admin = {
     artistList: `${baseURL}admin/artists`,
     actorList: `${baseURL}admin/actors`,
+    cms: `${baseURL}admin/cms`,
   };
 }
-
 
 // http://3.111.212.219:3002/api/v1/admin/cms?
 // Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2YwOGI3YTVkZmE5NmMyY2JkMTVhMiIsInVzZXJfdHlwZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBkaGFrYXJlY29yZC5jb20iLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE2NzY5OTQwMzMsImV4cCI6MTY3OTU4NjAzM30.X8isFvM40-QvKXbdnjGLcJ5rtwPmja5ERyrx8lbgs9o
