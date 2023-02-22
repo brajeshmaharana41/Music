@@ -20,9 +20,12 @@
   color: #EFF4F6;
 }
 .chips{
-    height: 63px;
-    overflow-x: auto;
-    white-space: nowrap;
+  height: 63px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.chips::-webkit-scrollbar{
+display: none;
 }
 .scroll{
   overflow: auto;
@@ -33,17 +36,36 @@
 .arts_padding{
   padding-left: 15px;
   padding-right: 15px;
+  cursor: pointer;
 }
 .btn_chip{
-    border: 1px solid #86909B;
-    border-radius: 20px;
-    background: #F4F8FB;
-    border: 1px solid rgba(134, 144, 155, 0.1);
+  border: 1px solid #86909B;
+  border-radius: 20px;
+  background: #F4F8FB;
+  border: 1px solid rgba(134, 144, 155, 0.1);
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 16px;
+  color: #0D2238;
 }
 .btn_chip:hover{
-  border: 1px solid #fb8aff;
-  border-radius: 20px;
-  background: #fb8aff;
+border: 1px solid #FF0000;
+border-radius: 20px;
+background: #FF0000;
+font-family: 'Inter';
+font-weight: 600;
+font-size: 16px;
+color: white;
+}
+
+.btn_chip_active{
+border: 1px solid #FF0000;
+border-radius: 20px;
+background: #FF0000;
+font-family: 'Inter';
+font-weight: 600;
+font-size: 16px;
+color:white;
 }
 .example-form {
     min-width: 150px;
@@ -76,6 +98,7 @@
     font-size: 14px;
     color: #86909B;
     text-decoration: none;
+    cursor: pointer;
   }
   .song_card{
     // display: flex;
@@ -138,11 +161,12 @@
     }
   }
   .allsong_bord{
-    width: 215px;
+    width: 250px;
     height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
     .img_song{
       width: 80px;
       height: 53px;
@@ -151,7 +175,7 @@
       align-items: center;
     }
     .dec_song{
-      width: 100px;
+      width: 140px;
       height: 53px;
       margin-bottom: 5px;
       .song_title{
@@ -164,7 +188,7 @@
         font-weight: 400;
         font-size: 12px; 
         font-family: 'Inter';
-        color: #86909B;        
+        color: #86909B;   
       }
     }
     .more_song{
@@ -177,4 +201,10 @@
   }
   .pordcast_img{
     border-radius: 10px;
+  }
+  .pointer{
+    cursor: pointer;
+  }
+  .mrgen_bton{
+    margin-bottom: 100px;
   }

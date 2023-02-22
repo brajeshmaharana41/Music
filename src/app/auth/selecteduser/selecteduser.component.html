@@ -1,0 +1,47 @@
+<div>
+  <div fxLayout="row wrap">
+    <div fxHide fxShow.gt-sm fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="40" fxFlex.xl="40"
+      class="background">
+      <img src="assets/splaceImage.png" alt="" class="splaceSize" />
+    </div>
+    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="60" fxFlex.xl="60" class="background">
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+        <div>
+          <img src="assets/Dhaka Record Logo_F 2.png" alt="" />
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+        <div>
+          <span class="head_title">Discover</span>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+        <div class="splace_dec">
+          <span class="head_des">Browse a list of shows<br />
+            happening tonight, tomorrow, and the next day.</span>
+        </div>
+      </div>
+      <!-- <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+        <div>
+          <span class="head_subdes">To continue, log in to Dhaka record</span>
+        </div>
+      </div> -->
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+        <button mat-button class="splace_btn" (click)="goToInternational()">
+          International User
+        </button>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-3 pb-5">
+        <button mat-button class="splace_btn" (click)="goToBangladeshi()">
+          Bangladeshi User
+        </button>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center" class="pt-5">
+        <div class="splace_enddec">
+          <span class="head_enddes">By continuing you are indicating that you agree to the Terms and
+            Privacy Policy.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

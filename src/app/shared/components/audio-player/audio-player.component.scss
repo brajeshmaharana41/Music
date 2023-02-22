@@ -1,0 +1,23 @@
+.card_header {
+    position: fixed;
+    z-index: 1;
+    bottom: 0rem;
+    height: 100px;
+    width: 82%;
+    padding-bottom: 20px;
+  }
+  .bord_songimg{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    border: 1px solid;
+  }
+  @media screen and (max-width: 959px) {
+    .card_header {
+        position: fixed;
+        z-index: 1;
+        bottom: 3rem;
+        height: 114px;
+        width: 100%;
+      }
+  }

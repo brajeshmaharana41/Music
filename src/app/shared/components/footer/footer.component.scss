@@ -1,93 +1,11 @@
-// .btn_head{
-//     background: transparent;
-//     border: 0px solid transparent;
-//     color: #373B53;
-//     font-size: 15px;
-//     margin-left: 20px;
-//     .img_pad{
-//         padding-right: 10px;
-//     }
-// }
-// .btn_icon{
-//     color: #C9CED6;
-//     margin: 5px;
-// }
-// .login_head{
-//     background: rgb(66, 66, 66);
-//     color: white;
-//     font-size: 15px;
-//     margin-left: 20px;
-//     .icon_pad{
-//         padding-left: 10px;
-//     }
-// }
-// .example-spacer {
-//     flex: 1 1 auto;
-//   }
-// .profile_pic{
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     .img_profile{
-//         width: 36px;
-//         height: 36px; 
-//     }
-// }
-// .bord_pro{
-//     background-color: #E33535;
-//     height: 17px;
-//     width: 37px;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     border-radius: 10px;
-//     margin-right: 5px;
-//     .pro_forn{
-//         font-size: 10px;
-//         font-weight: 600;
-//     }
-// }
-// .bord_pros{
-//     background-color: #E33535;
-//     height: 17px;
-//     width: 37px;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     border-radius: 10px;
-//     margin-left: 5px;
-//     .pro_forn{
-//         font-size: 10px;
-//         font-weight: 600;
-//     }
-// }
-// .head_title{
-//     font-size: 10px;
-//     font-family: Inter;
-//     font-weight: 500;
-//     color: #0D2238;
-// }
-// .head_subtitle{
-//     font-size: 16px;
-//     font-family: Inter;
-//     font-weight: 700;
-//     color: #0D2238;
-// }
-// .header_titles{
-//     width: 160px;
-//     height: 45px; 
-//     display: flex; 
-//     justify-content: center; 
-//     align-items: center;
-// }
 .card_header {
-    position: sticky;
+    position: fixed;
     z-index: 1;
     background-color: #060A0B;
     bottom: 0rem;
     height: 60px;
     width: 100%;
-    padding-bottom: 20px;
+    padding-bottom: 14px;
   }
   .btn_outer{
     width: 100%;

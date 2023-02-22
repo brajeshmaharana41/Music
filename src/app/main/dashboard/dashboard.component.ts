@@ -1,252 +1,152 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
-import { throwToolbarMixedModesError } from '@angular/material/toolbar';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
+import * as Type from '../../shared/type/main.type';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { MainService } from '../main.service';
-
+import { CommonService } from 'src/app/shared/services/common.service';
+import { Router } from '@angular/router';
+import * as CommonType from '../../shared/type/common-type';
+import { Constants } from 'src/app/shared/common/constant';
+import { SidebarService } from 'src/app/shared/services/sidebar.service';
 export interface User {
   name: string;
 }
-export interface SingerList {
-  image: string;
-  names: string;
-}
-export interface PlaylitList {
-  image: string;
-  names: string;
-  songs: string;
-}
-export interface SongList {
-  band_image: string;
-  band_names: string;
-  song_name: string;
-}
-export interface BandList {
-  band_title: string;
-  song_Data: SongList[]
-}
-const BandData: BandList[] = [
-  {
-    band_title:"Rock Band",
-    song_Data:[
-      {
-        band_image: "../../../assets/Band0.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-      {
-        band_image: "../../../assets/Band1.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-      {
-        band_image: "../../../assets/Band2.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-      {
-        band_image: "../../../assets/Band3.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-    ]
-  },
-  {
-    band_title:"Bangla Folk",
-    song_Data:[
-      {
-        band_image: "../../../assets/Band4.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-      {
-        band_image: "../../../assets/Band5.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-      {
-        band_image: "../../../assets/Band6.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-      {
-        band_image: "../../../assets/Band7.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-    ]
-  },
-  {
-    band_title:"Bangla Folk",
-    song_Data:[
-      {
-        band_image: "../../../assets/Band4.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-      {
-        band_image: "../../../assets/Band5.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-      {
-        band_image: "../../../assets/Band6.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-      {
-        band_image: "../../../assets/Band7.png",
-        band_names: "Running up that Hill (A Deal with the god)",
-        song_name: "Kate Bush"
-      },
-    ]
-  },
-]
-const SingerData: SingerList[] = [
-  { 
-    image: '../../../assets/Frame 12.png',
-    names: 'Ayub Bacchu'
-  },
-  { 
-    image: '../../../assets/Frame 13.png',
-    names: 'Subir Nandi'
-  },
-  { 
-    image: '../../../assets/Frame 14.png',
-    names: 'Nancy'
-  },
-  { 
-    image: '../../../assets/Frame 15.png',
-    names: 'Runa Laila'
-  },
-  { 
-    image: '../../../assets/Frame 15.png',
-    names: 'Runa Laila'
-  },
-  { 
-    image: '../../../assets/Frame 12.png',
-    names: 'Arijit'
-  },
-  { 
-    image: '../../../assets/Frame 12.png',
-    names: 'Arijit'
-  },
-  { 
-    image: '../../../assets/Frame 12.png',
-    names: 'Arijit'
-  },
-  { 
-    image: '../../../assets/Frame 12.png',
-    names: 'Arijit'
-  },
-  { 
-    image: '../../../assets/Frame 12.png',
-    names: 'Arijit'
-  },
-  { 
-    image: '../../../assets/Frame 12.png',
-    names: 'Arijit'
-  },
-]
-const PlaylistData: PlaylitList[] = [
-  { 
-    image: '../../../assets/Playlist 1.png',
-    names: 'Minar all song',
-    songs: '12 songs'
-  },
-  { 
-    image: '../../../assets/Playlist 2.png',
-    names: 'Best Rock song',
-    songs: '12 songs'
-  },
-  { 
-    image: '../../../assets/Playlist 3.png',
-    names: 'Artcell',
-    songs: '12 songs'
-  },
-  { 
-    image: '../../../assets/Playlist 2.png',
-    names: 'Best Rock song',
-    songs: '12 songs'
-  },
-  { 
-    image: '../../../assets/Playlist 3.png',
-    names: 'Artcell',
-    songs: '12 songs'
-  },
-  { 
-    image: '../../../assets/Playlist 2.png',
-    names: 'Best Rock song',
-    songs: '12 songs'
-  },
-  { 
-    image: '../../../assets/Playlist 4.png',
-    names: 'Miles',
-    songs: '12 songs'
-  },
-  { 
-    image: '../../../assets/Playlist 1.png',
-    names: 'Minar all song',
-    songs: '12 songs'
-  },
-  { 
-    image: '../../../assets/Playlist 2.png',
-    names: 'Best Rock song',
-    songs: '12 songs'
-  },
-  { 
-    image: '../../../assets/Playlist 1.png',
-    names: 'Minar all song',
-    songs: '12 songs'
-  },
-  { 
-    image: '../../../assets/Playlist 3.png',
-    names: 'Artcell',
-    songs: '12 songs'
-  },
-]
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-
-  constructor(private _mainService$:MainService) { }
   myControl = new FormControl<string | User>('');
-  options: User[] = [{name: 'Mary'}, {name: 'Shelley'}, {name: 'Igor'}];
+  options: User[] = [
+    // { name: 'Play List For You' },
+    // { name: 'Categories' },
+    // { name: 'Podcast' },
+  ];
   filteredOptions: Observable<User[]>;
-  artists = SingerData;
-  playlistSongs = PlaylistData;
-  band_songs = BandData;
   dashboardData: any;
-  playlistTitle=[];
-  playlist=[];
+  playlistTitle = [];
+  playlist = [];
+  selectedMood: Type.MoodType;
+  selectedTopPick: Array<Type.TopPickSubType>;
+  selectedToPickID: number;
+  selectedTrending: Type.TrendingType;
+  searchString: string;
+  constructor(
+    private _mainService$: MainService,
+    public _commonService$: CommonService,
+    public _router$: Router,
+    public _sidebarService$: SidebarService
+  ) {}
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => {
+      map((value) => {
         const name = typeof value === 'string' ? value : value?.name;
         return name ? this._filter(name as string) : this.options.slice();
-      }),
+      })
     );
 
-  this.getDashboardItem();
+    this.getDashboardItem();
   }
 
-  getDashboardItem(){
-    this._mainService$.getDashboard().subscribe((res)=>{
-      if(res && res.body){
-        this.dashboardData={...res.body};
-        console.log(this.dashboardData);
+  search() {
+    console.log(this.searchString);
+    if (this.searchString) {
+      this._router$.navigate(['main/searchData'], {
+        queryParams: { term: this.searchString },
+      });
+    }
+  }
+
+  getDashboardItem() {
+    this._mainService$.getDashboard().subscribe({
+      next: (res) => {
+        if (res && res.body) {
+          this.dashboardData = { ...res.body };
+          // This called because set mood type to 'all' when this page loads.
+          this.autoSelectAllMoodType();
+          this.selectedTrending = this.dashboardData.trending[0];
+          // This called because set Top pick type to 'artist' when this page loads.
+          this.selectTopPick(this.topPickList.artist, 1);
+          console.log(this.dashboardData);
+        }
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err.error);
+      },
+    });
+  }
+
+  get topPickList() {
+    return this.dashboardData.topPicks;
+  }
+
+  selectMood(moodObj: Type.MoodType) {
+    this.selectedMood = moodObj;
+  }
+
+  autoSelectAllMoodType() {
+    (this.dashboardData.moodList as []).filter((ele: Type.MoodType) => {
+      if (ele && ele.id === 'all') {
+        this.selectMood(ele);
       }
-    },(err:HttpErrorResponse)=>{
-      console.log(err.error);
-    })
+    });
   }
 
+  // goToViewAll(songList: Type.SongType[], listTitle: string) {
+  //   this._commonService$.viewDataCompSongList = songList;
+  //   this._commonService$.listTitle = listTitle;
+  //   this._router$.navigate(['main/viewData']);
+  // }
+
+  // getSongs(paramObj: CommonType.SearchSongParamType, title: string) {
+  //   this._commonService$.getSongs(paramObj).subscribe({
+  //     next: (res: CommonType.SearchSongAPIResponseType) => {
+  //       if (res.status === Constants.SUCCESSSTATUSCODE) {
+  //         this._commonService$.goToViewSongList(res.body, title);
+  //       }
+  //     },
+  //     error: (err: HttpErrorResponse) => {
+  //       console.log(err.error);
+  //     },
+  //   });
+  // }
+
+  selectTopPick(topPick: Array<Type.TopPickSubType>, topPickID: number) {
+    this.selectedTopPick = topPick;
+    this.selectedToPickID = topPickID;
+  }
+
+  goToTopPickPage() {
+    this._router$.navigate([
+      `main/singerlist/${
+        this.selectedToPickID === 1 ? Constants.ARTIST : Constants.ACTOR
+      }`,
+    ]);
+    // setTimeout(() => {
+    //   this._sidebarService$.topPickChange.next(
+    //     this.selectedToPickID === 1 ? Constants.ARTIST : Constants.ACTOR
+    //   );
+    // }, 1000);
+  }
+
+  getTypeOfTopPick(selectedTopPickObj: any) {
+    if (this.selectedToPickID === 1) {
+      this._commonService$.getSongsToViewPage(
+        { artist: selectedTopPickObj?.id },
+        selectedTopPickObj?.title
+      );
+    } else {
+      this._commonService$.getSongsToViewPage(
+        { actor: selectedTopPickObj?.id },
+        selectedTopPickObj?.title
+      );
+    }
+  }
   displayFn(user: User): string {
     return user && user.name ? user.name : '';
   }
@@ -254,7 +154,8 @@ export class DashboardComponent implements OnInit {
   private _filter(name: string): User[] {
     const filterValue = name.toLowerCase();
 
-    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+    return this.options.filter((option) =>
+      option.name.toLowerCase().includes(filterValue)
+    );
   }
-
 }
