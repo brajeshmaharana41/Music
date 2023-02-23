@@ -7,14 +7,14 @@ import { SidebarService } from 'src/app/shared/services/sidebar.service';
   styleUrls: ['./terms-and-condition.component.scss'],
 })
 export class TermsAndConditionComponent implements OnInit {
-  termsAndCondition: string;
+  termsAndCondition: any;
   constructor(private _sidebarService: SidebarService) {}
 
   ngOnInit(): void {
     this.termsAndCondition = this._sidebarService.cmsData.map((ele: any) => {
       if (ele.slug === 'terms-condition') {
-        return ele.content;
+        return ele;
       }
-    })[0];
+    })[1];
   }
 }

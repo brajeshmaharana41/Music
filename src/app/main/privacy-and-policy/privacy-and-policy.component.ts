@@ -7,14 +7,14 @@ import { SidebarService } from 'src/app/shared/services/sidebar.service';
   styleUrls: ['./privacy-and-policy.component.scss'],
 })
 export class PrivacyAndPolicyComponent implements OnInit {
-  privacyAndPolicy: string;
+  privacyAndPolicy: any;
   constructor(private _sidebarService: SidebarService) {}
 
   ngOnInit(): void {
     this.privacyAndPolicy = this._sidebarService.cmsData.map((ele: any) => {
       if (ele.slug === 'privacy-policy') {
-        return ele.content;
+        return ele;
       }
-    })[0];
+    })[2];
   }
 }
