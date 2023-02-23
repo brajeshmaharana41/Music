@@ -20,13 +20,6 @@ const routes: Routes = [
     canActivate: [NoAuthTokenGuard],
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
-
-  {
-    path: 'about',
-    canActivate: [AuthTokenGuard],
-    loadChildren: () =>
-      import('./about/about.module').then((m) => m.AboutModule),
-  },
   {
     path: 'main',
     canActivate: [AuthTokenGuard],

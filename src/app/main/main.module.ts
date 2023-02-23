@@ -37,9 +37,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AuthRoutingModule } from '../auth/auth-routing.module';
 import { MatSelectModule } from '@angular/material/select';
 import { SearchDataComponent } from '../shared/components/search-data/search-data.component';
-import { AboutUsComponent } from '../about/about-us/about-us.component';
-import { TermsAndConditionComponent } from '../about/terms-and-condition/terms-and-condition.component';
-import { PrivacyAndPolicyComponent } from '../about/privacy-and-policy/privacy-and-policy.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { TermsAndConditionComponent } from './terms-and-condition/terms-and-condition.component';
+import { PrivacyAndPolicyComponent } from './privacy-and-policy/privacy-and-policy.component';
 
 @NgModule({
   declarations: [
@@ -54,9 +54,9 @@ import { PrivacyAndPolicyComponent } from '../about/privacy-and-policy/privacy-a
     SearchDataComponent,
     SingerListComponent,
     ProfileUpdateComponent,
-    AboutUsComponent, 
-    TermsAndConditionComponent, 
-    PrivacyAndPolicyComponent
+    AboutUsComponent,
+    TermsAndConditionComponent,
+    PrivacyAndPolicyComponent,
   ],
   imports: [
     CommonModule,

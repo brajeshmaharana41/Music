@@ -5,6 +5,7 @@ import { MainService } from 'src/app/main/main.service';
 import * as Type from '../type/main.type';
 import { CommonService } from './common.service';
 import { Subject } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 
 export class DynamicFlatNode {
   constructor(
@@ -62,7 +63,7 @@ export class SidebarService {
     );
   }
 
-  getCMS() {
+  async getCMS() {
     this._mainService$.getCMS().subscribe({
       next: (res) => {
         this.cmsData = res.body;
