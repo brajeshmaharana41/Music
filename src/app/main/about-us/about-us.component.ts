@@ -7,13 +7,13 @@ import { SidebarService } from 'src/app/shared/services/sidebar.service';
   styleUrls: ['./about-us.component.scss'],
 })
 export class AboutUsComponent implements OnInit {
-  aboutUs: string;
+  aboutUs: any;
   constructor(private _sidebarService: SidebarService) {}
 
   ngOnInit(): void {
     this.aboutUs = this._sidebarService.cmsData.map((ele) => {
       if (ele.slug === 'about-us') {
-        return ele.content;
+        return ele;
       }
     })[0];
   }
